@@ -8,6 +8,7 @@ class ConsoleHub{
 
     public :
         void affMsg();
+        void listenInputs();
         void defineNew(std::string const& args);
         void load(std::string const& str);
 
