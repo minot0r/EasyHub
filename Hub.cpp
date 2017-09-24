@@ -31,8 +31,21 @@ void ConsoleHub::affMsg(){
 }
 
 void ConsoleHub::defineNew(std::string const& args){
-    ConsoleHub::definedVars[Parser::getVarName(args)][Parser::getPath(args)] = Parser::getType(args);
-    std::cout << "Successfully added var \"" << Parser::getVarName(args) << "\" connecting to path " << Parser::getPath(args) << " with method " << Parser::getType(args) << std::endl;
+    std::vector<std::string> eachArgs (Utils::split(args, ' '));
+    if(eachArgs.size() == 4){
+        std::string type(Parser::getType(args));
+        std::string varName(Parser::getVarName(args));
+        std::string path(Parser::getPath(args));
+
+        if(type == "cd" || type == "exec"){
+            ConsoleHub::definedVars[varName][path] = type;
+            std::cout << "Successfully added var \"" << varName << "\" connecting to the path " << path << " with method " << type << std::endl;
+        }else{
+            std::cout << "Error while aptempting to create var \"" << varName << "\", type must be exec or cd" << std::endl;
+        }
+    }else{
+        std::cout << "Error while aptempting to create a new var: not enough parameters.\nSyntax is: define varname path type [cd, exec]" << std::endl;
+    }
 }
 
 void ConsoleHub::load(std::string const& str){
@@ -44,17 +57,14 @@ void ConsoleHub::listenInputs(){
     std::cout << "> ";
     while(getline(std::cin, input)){
         std::vector<std::string> args (Utils::split(input, ' '));
-        if(args.size() == 4){
             if(args[0] == "define"){
                 defineNew(input);
-            }
-        }else if(args.size() == 1){
-            if(args[0] == "exit"){
+            }else if(args[0] == "exit"){
                 exit(0);
+            }else{
+                std::cout << "Error: unknown command please type help to see the list of commands" << std::endl;
             }
-        }else{
-            std::cout << "unknown command please type help to see the list of commands" << std::endl;
-        }
+
         std::cout << "> ";
     }
 

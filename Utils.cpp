@@ -31,10 +31,33 @@ std::vector<std::string> Utils::split(std::string const& str, char const& splitt
     const char* chars = temp.c_str();
 
     int last = 0;
-    for(int iterato(0); iterato < len; iterato++){
-        if(chars[iterato] == splitter || (iterato == len-1 && temp.at(iterato) != splitter)){
-            fin.push_back(temp.substr(last, iterato-last));
-            last = iterato + 1;
+    for(int i(0); i < len; i++){
+        if(chars[i] == splitter || (i == len-1 && char[i] != splitter)){
+            fin.push_back(temp.substr(last, i-last));
+            last = i + 1;
+        }
+    }
+
+    return fin;
+}
+
+int Utils::getFirst(std::string const& str, char const& first){
+    char const* chars = str.c_str();
+
+    for(int i(0); i < str.length(); i++){
+        if(chars[i] == first){
+            return i;
+        }
+    }
+}
+
+int Utils::getLast(std::string const& str, char const& last){
+    char const* chars = str.c_str();
+    int fin(0);
+
+    for(int i(0); i < str.length(); i++){
+        if(chars[i] == last){
+            fin = i;
         }
     }
 
