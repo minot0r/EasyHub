@@ -32,19 +32,21 @@ void ConsoleHub::affMsg(){
 
 void ConsoleHub::defineNew(std::string const& args){
     std::vector<std::string> eachArgs (Utils::split(args, ' '));
-    if(eachArgs.size() == 4){
+    if(Utils::contains(args, "\"")){
+        if(eachArgs.size() == 4){
         std::string type(Parser::getType(args));
         std::string varName(Parser::getVarName(args));
         std::string path(Parser::getPath(args));
 
-        if(type == "cd" || type == "exec"){
-            ConsoleHub::definedVars[varName][path] = type;
-            std::cout << "Successfully added var \"" << varName << "\" connecting to the path " << path << " with method " << type << std::endl;
+            if(type == "cd" || type == "exec"){
+                ConsoleHub::definedVars[varName][path] = type;
+                std::cout << "Successfully added var \"" << varName << "\" connecting to the path " << path << " with method " << type << std::endl;
+            }else{
+                std::cout << "Error while aptempting to create var \"" << varName << "\", type must be exec or cd" << std::endl;
+            }
         }else{
-            std::cout << "Error while aptempting to create var \"" << varName << "\", type must be exec or cd" << std::endl;
+            std::cout << "Error while aptempting to create a new var: not enough parameters.\nSyntax is: define varname path type [cd, exec]" << std::endl;
         }
-    }else{
-        std::cout << "Error while aptempting to create a new var: not enough parameters.\nSyntax is: define varname path type [cd, exec]" << std::endl;
     }
 }
 

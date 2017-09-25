@@ -32,9 +32,17 @@ std::vector<std::string> Utils::split(std::string const& str, char const& splitt
 
     int last = 0;
     for(int i(0); i < len; i++){
-        if(chars[i] == splitter || (i == len-1 && char[i] != splitter)){
-            fin.push_back(temp.substr(last, i-last));
-            last = i + 1;
+        if(chars[i] == splitter){
+            if(!(i == len-1 && chars[i] != splitter)){
+                if(chars[i+1] != splitter){
+                    fin.push_back(temp.substr(last, i-last));
+                    last = i + 1;
+                }else{
+                    last = i + 1;
+                }
+            }else{
+                fin.push_back(temp.substr(last, i-last));
+            }
         }
     }
 

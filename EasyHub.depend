@@ -35,3 +35,40 @@
 	<string>
 	<vector>
 
+1506341931 source:x:\dev + outils\easyhub\easyhub\hub.cpp
+	"Hub.h"
+	"Utils.h"
+	"Parser.h"
+	<stdlib.h>
+	<string>
+	<iostream>
+	<vector>
+
+1506341931 x:\dev + outils\easyhub\easyhub\hub.h
+	<string>
+	<map>
+
+1506341931 x:\dev + outils\easyhub\easyhub\utils.h
+	<string>
+	<vector>
+
+1506341931 x:\dev + outils\easyhub\easyhub\parser.h
+	<string>
+
+1506341931 source:x:\dev + outils\easyhub\easyhub\main.cpp
+	<iostream>
+	<string>
+	"Hub.h"
+
+1506341931 source:x:\dev + outils\easyhub\easyhub\parser.cpp
+	"Parser.h"
+	"Utils.h"
+	<string>
+	<vector>
+
+1506341931 source:x:\dev + outils\easyhub\easyhub\utils.cpp
+	"Utils.h"
+	<algorithm>
+	<string>
+	<vector>
+
