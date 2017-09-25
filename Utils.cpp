@@ -46,6 +46,7 @@ std::vector<std::string> Utils::split(std::string const& str, char const& splitt
         }
     }
 
+    delete chars;
     return fin;
 }
 
@@ -69,5 +70,6 @@ int Utils::getLast(std::string const& str, char const& last){
         }
     }
 
+    delete chars;
     return fin;
 }

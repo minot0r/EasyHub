@@ -30,13 +30,11 @@ void ConsoleHub::affMsg(){
 
 }
 
-void ConsoleHub::defineNew(std::string const& args){
-    std::vector<std::string> eachArgs (Utils::split(args, ' '));
-    if(Utils::contains(args, "\"")){
+void ConsoleHub::define(std::vector<std::string> const& eachArgs, std::string const& args){
         if(eachArgs.size() == 4){
-        std::string type(Parser::getType(args));
-        std::string varName(Parser::getVarName(args));
-        std::string path(Parser::getPath(args));
+            std::string type(Parser::getType(args));
+            std::string varName(Parser::getVarName(args));
+            std::string path(Parser::getPath(args));
 
             if(type == "cd" || type == "exec"){
                 ConsoleHub::definedVars[varName][path] = type;
@@ -47,6 +45,19 @@ void ConsoleHub::defineNew(std::string const& args){
         }else{
             std::cout << "Error while aptempting to create a new var: not enough parameters.\nSyntax is: define varname path type [cd, exec]" << std::endl;
         }
+}
+
+void ConsoleHub::defineNew(std::string args){
+    std::vector<std::string> eachArgs (Utils::split(args, ' '));
+    if(!Utils::contains(args, "\"")){
+        define(eachArgs, args);
+    }else{
+        std::string child = args;
+        args = args.substr(0, Utils::getFirst(args, '"'));
+        args = args + child.substr(Utils::getLast(child, '"')+1, child.length());
+
+        eachArgs = Utils::split(args, ' ');
+        eachArgs.insert(eachArgs.begin()+3, args);
     }
 }
 

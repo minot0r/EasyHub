@@ -1,35 +1,37 @@
 # depslib dependency file v1.0
-1506270498 source:c:\c++\easyhub\hub.cpp
+1506373178 source:c:\c++\easyhub\hub.cpp
 	"Hub.h"
 	"Utils.h"
 	"Parser.h"
+	<stdlib.h>
 	<string>
 	<iostream>
 	<vector>
 
-1506270407 c:\c++\easyhub\hub.h
+1506373133 c:\c++\easyhub\hub.h
 	<string>
 	<map>
+	<vector>
 
 1506270482 source:c:\c++\easyhub\main.cpp
 	<iostream>
 	<string>
 	"Hub.h"
 
-1506268151 c:\c++\easyhub\utils.h
+1506372610 c:\c++\easyhub\utils.h
 	<string>
 	<vector>
 
 1506254576 c:\c++\easyhub\parser.h
 	<string>
 
-1506270676 source:c:\c++\easyhub\parser.cpp
+1506280748 source:c:\c++\easyhub\parser.cpp
 	"Parser.h"
 	"Utils.h"
 	<string>
 	<vector>
 
-1506268122 source:c:\c++\easyhub\utils.cpp
+1506358940 source:c:\c++\easyhub\utils.cpp
 	"Utils.h"
 	<algorithm>
 	<string>
