@@ -53,23 +53,20 @@ void ConsoleHub::defineNew(std::string args){
         define(eachArgs, args);
     }else{
         std::string child = args;
+
+        std::string path(args.substr(Utils::getFirst(args, '"')+1, Utils::getLast(args, '"')-Utils::getFirst(args, '"')-1));
+
         args = args.substr(0, Utils::getFirst(args, '"'));
         args = args + child.substr(Utils::getLast(child, '"')+1, child.length());
 
-        std::cout << args << std::endl;
+        std::cout << path << std::endl;
 
         eachArgs.clear();
-        eachArgs.reserve(5);
         eachArgs = Utils::split(args, ' ');
 
-        for(int i(0); i < eachArgs.size(); i++){
-            std::cout << eachArgs[i] << "|" << std::endl;
-        }
-        //eachArgs.insert(eachArgs.begin(), "path");
+        Utils::insertAt(eachArgs, 2, path);
 
-        std::cout << eachArgs.capacity() << std::endl;
-
-        define(eachArgs, args);
+        define(eachArgs, path);
     }
 }
 

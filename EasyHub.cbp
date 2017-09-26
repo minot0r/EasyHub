@@ -32,6 +32,12 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Hub.cpp" />
+		<Unit filename="Hub.h" />
+		<Unit filename="Parser.cpp" />
+		<Unit filename="Parser.h" />
+		<Unit filename="Utils.cpp" />
+		<Unit filename="Utils.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

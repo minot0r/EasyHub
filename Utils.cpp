@@ -75,3 +75,9 @@ int Utils::getLast(std::string const& str, char const& last){
     delete chars;
     return fin;
 }
+
+void Utils::insertAt(std::vector<std::string>& vec, int const& index, std::string const& value){
+    std::vector<std::string>::iterator it;
+    it = vec.begin();
+    it = vec.insert (it + index, value);
+}

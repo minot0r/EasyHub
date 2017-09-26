@@ -13,6 +13,7 @@ class Utils{
         static std::vector<std::string> split(std::string const& str, char const& splitter);
         static int getLast(std::string const& str, char const& last);
         static int getFirst(std::string const& str, char const& first);
+        static void insertAt(std::vector<std::string>& vec, int const& index, std::string const& value);
 };
 
 #endif // UTILS_H_INCLUDED
