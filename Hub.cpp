@@ -56,8 +56,12 @@ void ConsoleHub::defineNew(std::string args){
         args = args.substr(0, Utils::getFirst(args, '"'));
         args = args + child.substr(Utils::getLast(child, '"')+1, child.length());
 
+        std::cout << args << std::endl;
+
+        eachArgs.clear();
         eachArgs = Utils::split(args, ' ');
-        eachArgs.insert(eachArgs.begin()+3, args);
+
+        define(eachArgs, args);
     }
 }
 

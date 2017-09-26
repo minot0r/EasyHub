@@ -55,6 +55,7 @@ int Utils::getFirst(std::string const& str, char const& first){
 
     for(int i(0); i < str.length(); i++){
         if(chars[i] == first){
+            delete chars;
             return i;
         }
     }

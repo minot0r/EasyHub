@@ -7,12 +7,8 @@
 std::string Parser::getPath(std::string const& args){
     std::string temp(args);
     std::string path;
-    if(!Utils::contains(temp, "\"")){
-        std::vector<std::string> args = Utils::split(temp, ' ');
-        return args[2];
-    }else{
-
-    }
+    std::vector<std::string> vec = Utils::split(temp, ' ');
+    return vec[2];
 }
 
 std::string Parser::getType(std::string const& args){
