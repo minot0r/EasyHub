@@ -59,7 +59,15 @@ void ConsoleHub::defineNew(std::string args){
         std::cout << args << std::endl;
 
         eachArgs.clear();
+        eachArgs.reserve(5);
         eachArgs = Utils::split(args, ' ');
+
+        for(int i(0); i < eachArgs.size(); i++){
+            std::cout << eachArgs[i] << "|" << std::endl;
+        }
+        //eachArgs.insert(eachArgs.begin(), "path");
+
+        std::cout << eachArgs.capacity() << std::endl;
 
         define(eachArgs, args);
     }

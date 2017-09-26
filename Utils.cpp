@@ -32,23 +32,24 @@ std::vector<std::string> Utils::split(std::string const& str, char const& splitt
 
     int last = 0;
     for(int i(0); i < len; i++){
-        if(chars[i] == splitter){
-            if(!(i == len-1 && chars[i] != splitter)){
-                if(chars[i+1] != splitter){
-                    fin.push_back(temp.substr(last, i-last));
+        if(chars[i] == splitter || (i == len-1 && chars[i] != splitter)){
+            if(!(chars[i+1] == splitter)){
+                std::string splitted(temp.substr(last, i-last));
+                if(Utils::contains(splitted, std::string(1, splitter))){
+                    fin.push_back(splitted.substr(0, splitted.length()-1));
                     last = i + 1;
                 }else{
+                    fin.push_back(splitted);
                     last = i + 1;
                 }
-            }else{
-                fin.push_back(temp.substr(last, i-last));
             }
         }
     }
-
     delete chars;
     return fin;
 }
+
+
 
 int Utils::getFirst(std::string const& str, char const& first){
     char const* chars = str.c_str();
