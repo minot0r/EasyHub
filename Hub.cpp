@@ -30,27 +30,23 @@ void ConsoleHub::affMsg(){
 
 }
 
-void ConsoleHub::define(std::vector<std::string> const& eachArgs, std::string const& args){
-        if(eachArgs.size() == 4){
-            std::string type(Parser::getType(args));
-            std::string varName(Parser::getVarName(args));
-            std::string path(Parser::getPath(args));
-
-            if(type == "cd" || type == "exec"){
-                ConsoleHub::definedVars[varName][path] = type;
-                std::cout << "Successfully added var \"" << varName << "\" connecting to the path " << path << " with method " << type << std::endl;
-            }else{
-                std::cout << "Error while aptempting to create var \"" << varName << "\", type must be exec or cd" << std::endl;
-            }
-        }else{
-            std::cout << "Error while aptempting to create a new var: not enough parameters.\nSyntax is: define varname path type [cd, exec]" << std::endl;
-        }
+void ConsoleHub::define(std::string const& varName, std::string const& path, std::string const& type){
+    if(type == "cd" || type == "exec"){
+        ConsoleHub::definedVars[varName][path] = type;
+        std::cout << "Successfully added var \"" << varName << "\" connecting to the path " << path << " with method " << type << std::endl;
+    }else{
+        std::cout << "Error while aptempting to create var \"" << varName << "\", type must be exec or cd" << std::endl;
+    }
 }
 
 void ConsoleHub::defineNew(std::string args){
     std::vector<std::string> eachArgs (Utils::split(args, ' '));
     if(!Utils::contains(args, "\"")){
-        define(eachArgs, args);
+        if(eachArgs.size() == 4){
+            define(Parser::getVarName(args), Parser::getPath(args), Parser::getType(args));
+        }else{
+            std::cout << "Error while aptempting to create a new var: not enough parameters.\nSyntax is: define varname path type [cd, exec]" << std::endl;
+        }
     }else{
         std::string child = args;
 
@@ -59,14 +55,15 @@ void ConsoleHub::defineNew(std::string args){
         args = args.substr(0, Utils::getFirst(args, '"'));
         args = args + child.substr(Utils::getLast(child, '"')+1, child.length());
 
-        std::cout << path << std::endl;
-
         eachArgs.clear();
         eachArgs = Utils::split(args, ' ');
 
         Utils::insertAt(eachArgs, 2, path);
-
-        define(eachArgs, path);
+        if(eachArgs.size() == 4){
+            define(eachArgs[1], eachArgs[2], eachArgs[3]);
+        }else{
+            std::cout << "Error while aptempting to create a new var: not enough parameters.\nSyntax is: define varname path type [cd, exec]" << std::endl;
+        }
     }
 }
 

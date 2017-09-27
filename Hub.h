@@ -15,7 +15,7 @@ class ConsoleHub{
 
     private:
         std::map<std::string, std::map<std::string, std::string> > definedVars;
-        void define(std::vector<std::string> const& eachArgs, std::string const& args);
+        void define(std::string const& varName, std::string const& path, std::string const& type);
 };
 
 #endif // HUB_H_INCLUDED
