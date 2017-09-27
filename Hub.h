@@ -12,6 +12,7 @@ class ConsoleHub{
         void listenInputs();
         void defineNew(std::string args);
         void load(std::string const& str);
+        void onCommand(std::vector<std::string> const& args, std::string const& input);
 
     private:
         std::map<std::string, std::map<std::string, std::string> > definedVars;

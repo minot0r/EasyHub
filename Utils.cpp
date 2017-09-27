@@ -86,3 +86,11 @@ void Utils::insertAt(std::vector<std::string>& vec, int const& index, std::strin
     it = vec.begin();
     it = vec.insert (it + index, value);
 }
+
+bool Utils::hasEnoughParams(std::vector<std::string> const& vec, int const& paramsLen){
+    if(vec.size() == paramsLen){
+        return true;
+    }else{
+        return false;
+    }
+}

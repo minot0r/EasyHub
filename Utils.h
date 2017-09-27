@@ -15,6 +15,7 @@ class Utils{
         static int getFirst(std::string const& str, char const& first);
         static void insertAt(std::vector<std::string>& vec, int const& index, std::string const& value);
         static void removeBlank(std::vector<std::string>& vec);
+        static bool hasEnoughParams(std::vector<std::string> const& vec, int const& paramsLen);
 };
 
 #endif // UTILS_H_INCLUDED

@@ -1,14 +1,14 @@
 # depslib dependency file v1.0
-1506539396 source:c:\c++\easyhub\hub.cpp
+1506544745 source:c:\c++\easyhub\hub.cpp
 	"Hub.h"
 	"Utils.h"
 	"Parser.h"
-	<stdlib.h>
+	"Printer.h"
 	<string>
 	<iostream>
 	<vector>
 
-1506491474 c:\c++\easyhub\hub.h
+1506544954 c:\c++\easyhub\hub.h
 	<string>
 	<map>
 	<vector>
@@ -18,23 +18,27 @@
 	<string>
 	"Hub.h"
 
-1506541165 c:\c++\easyhub\utils.h
+1506542882 c:\c++\easyhub\utils.h
 	<string>
 	<vector>
 
-1506254576 c:\c++\easyhub\parser.h
+1506543606 c:\c++\easyhub\parser.h
 	<string>
 
-1506405707 source:c:\c++\easyhub\parser.cpp
+1506543654 source:c:\c++\easyhub\parser.cpp
 	"Parser.h"
 	"Utils.h"
 	<string>
 	<vector>
 
-1506541693 source:c:\c++\easyhub\utils.cpp
+1506542943 source:c:\c++\easyhub\utils.cpp
 	"Utils.h"
 	<algorithm>
 	<string>
 	<vector>
 	<iostream>
+
+1506544762 c:\c++\easyhub\printer.h
+	<string>
+	<vector>
 

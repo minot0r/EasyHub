@@ -24,3 +24,14 @@ std::string Parser::getVarName(std::string const& args){
     std::vector<std::string> arr = Utils::split(temp, ' ');
     return arr[1];
 }
+
+std::string Parser::getBrackPath(std::string const& str){
+    return str.substr(Utils::getFirst(str, '"')+1, Utils::getLast(str, '"')-Utils::getFirst(str, '"')-1);
+}
+
+std::string Parser::subtractBrackPath(std::string str){
+    std::string clone = str;
+    str = str.substr(0, Utils::getFirst(str, '"'));
+    str = str + clone.substr(Utils::getLast(clone, '"')+1, clone.length());
+    return str;
+}
