@@ -14,6 +14,7 @@ class Utils{
         static int getLast(std::string const& str, char const& last);
         static int getFirst(std::string const& str, char const& first);
         static void insertAt(std::vector<std::string>& vec, int const& index, std::string const& value);
+        static void removeBlank(std::vector<std::string>& vec);
 };
 
 #endif // UTILS_H_INCLUDED

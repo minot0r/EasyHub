@@ -62,7 +62,7 @@ void ConsoleHub::defineNew(std::string args){
         if(eachArgs.size() == 4){
             define(eachArgs[1], eachArgs[2], eachArgs[3]);
         }else{
-            std::cout << "Error while aptempting to create a new var: not enough parameters.\nSyntax is: define varname path type [cd, exec]" << std::endl;
+            std::cout << "Error while aptempting to create a new var: not enough parameters(" << eachArgs.size() << ").\nSyntax is: define varname path type [cd, exec]" << std::endl;
         }
     }
 }

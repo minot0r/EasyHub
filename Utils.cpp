@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <string>
 #include <vector>
+#include <iostream>
 
 void Utils::toLowerCase(std::string toLow){
     std::transform(toLow.begin(), toLow.end(), toLow.begin(), ::tolower);
@@ -24,6 +25,14 @@ bool Utils::contains(std::string const& container, std::string const& contained)
     }
 }
 
+void Utils::removeBlank(std::vector<std::string> &vec){
+    for(int i(0); i < vec.size(); i++){
+        if(vec[i] == ""){
+            vec.erase(vec.begin()+i);
+        }
+    }
+}
+
 std::vector<std::string> Utils::split(std::string const& str, char const& splitter){
     std::string temp(str + " ");
     std::vector<std::string> fin;
@@ -33,21 +42,17 @@ std::vector<std::string> Utils::split(std::string const& str, char const& splitt
     int last = 0;
     for(int i(0); i < len; i++){
         if(chars[i] == splitter || (i == len-1 && chars[i] != splitter)){
-            if(!(chars[i+1] == splitter)){
-                std::string splitted(temp.substr(last, i-last));
-                if(Utils::contains(splitted, std::string(1, splitter))){
-                    fin.push_back(splitted.substr(0, splitted.length()-1));
-                    last = i + 1;
-                }else{
-                    fin.push_back(splitted);
-                    last = i + 1;
-                }
-            }
+            fin.push_back(temp.substr(last, i-last));
+            last = i + 1;
         }
     }
+
+    Utils::removeBlank(fin);
+
     delete chars;
     return fin;
 }
+
 
 
 
