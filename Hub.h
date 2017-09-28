@@ -17,6 +17,7 @@ class ConsoleHub{
     private:
         std::map<std::string, std::map<std::string, std::string> > definedVars;
         void define(std::string const& varName, std::string const& path, std::string const& type);
+        bool getWithPrefix(std::string& input);
 };
 
 #endif // HUB_H_INCLUDED

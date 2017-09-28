@@ -68,7 +68,7 @@ void ConsoleHub::load(std::string const& str){
 
 void ConsoleHub::listenInputs(){
     std::string input;
-    while(getline(std::cin, input)){
+    while(getWithPrefix(input)){
         onCommand(Utils::split(input, ' '), input);
     }
 
@@ -82,4 +82,10 @@ void ConsoleHub::onCommand(std::vector<std::string> const& args, std::string con
     }else{
         Printer::unknwCmd(args[0]);
     }
+}
+
+bool ConsoleHub::getWithPrefix(std::string& input){
+    std::cout << "$ ";
+    getline(std::cin, input);
+    return true;
 }
