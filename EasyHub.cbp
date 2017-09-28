@@ -36,6 +36,8 @@
 		<Unit filename="Hub.h" />
 		<Unit filename="Parser.cpp" />
 		<Unit filename="Parser.h" />
+		<Unit filename="Printer.cpp" />
+		<Unit filename="Printer.h" />
 		<Unit filename="Utils.cpp" />
 		<Unit filename="Utils.h" />
 		<Unit filename="main.cpp" />

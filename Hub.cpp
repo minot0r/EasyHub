@@ -7,19 +7,13 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <map>
 
 void ConsoleHub::affMsg(){
 
-    std::string display =
-        "  ______                _    _       _     \n"
-        " |  ____|              | |  | |     | |    \n"
-        " | |__   __ _ ___ _   _| |__| |_   _| |__  \n"
-        " |  __| / _` / __| | | |  __  | | | | '_ \\ \n"
-        " | |___| (_| \\__ \\ |_| | |  | | |_| | |_) |\n"
-        " |______\\__,_|___/\\__, |_|  |_|\\__,_|_.__/ \n"
-        "                   __/ |                   \n"
-        "                  |___/                    \n"
-        "\n\n";
+    std::string display = "Easy Hub (C++) win v";
+    display.append(version);
+    display.append("\n");
 
     std::string help = " | define a new var to the hub with: define varname path type [cd, exec]\n"
     " | load a created var with load varname\n"
@@ -32,7 +26,15 @@ void ConsoleHub::affMsg(){
 
 void ConsoleHub::define(std::string const& varName, std::string const& path, std::string const& type){
     if(type == "cd" || type == "exec"){
-        ConsoleHub::definedVars[varName][path] = type;
+        std::string arr[2];
+        arr[0] = path;
+        arr[1] = type;
+        if(exists(varName)){
+            definedVars.erase(varName);
+            definedVars.insert(std::pair<std::string, std::string[2]>(varName, arr));
+        }else{
+            definedVars.insert(std::pair<std::string, std::string[2]>(varName, arr));
+        }
         Printer::successCreated(varName, path, type);
     }else{
         Printer::typeError(type, varName);
@@ -62,8 +64,36 @@ void ConsoleHub::defineNew(std::string args){
     }
 }
 
-void ConsoleHub::load(std::string const& str){
+bool ConsoleHub::exists(std::string const& var){
+    for(std::map<std::string, std::string[2]>::iterator it = definedVars.begin(); it != definedVars.end(); it++){
+        if(it->first == var){
+            return true;
+        }
+    }
+    return false;
+}
 
+std::string ConsoleHub::getPath(std::string const& var){
+    std::map<std::string, std::string[2]>::iterator pos = definedVars.find(var);
+    if (pos != definedVars.end()){
+        std::string value[2] = pos->second;
+        return value[0];
+    }
+}
+
+void ConsoleHub::load(std::string const& str){
+    std::vector<std::string> eachArgs = Utils::split(str, ' ');
+    if(Utils::hasEnoughParams(eachArgs, 2)){
+        if(exists(eachArgs[1])){
+            std::string path("start cmd /K \"cd /d ");
+            path.append(getPath(eachArgs[1]));
+            path.append("\"");
+            std::cout << path << std::endl;
+            system(path.c_str());
+        }
+    }else{
+        Printer::printParamsError(eachArgs.size());
+    }
 }
 
 void ConsoleHub::listenInputs(){
@@ -79,6 +109,10 @@ void ConsoleHub::onCommand(std::vector<std::string> const& args, std::string con
         defineNew(input);
     }else if(args[0] == "exit"){
         exit(0);
+    }else if(args[0] ==  "load"){
+        load(input);
+    }else if(args[0] == "delete"){
+        deleteCmd(input);
     }else{
         Printer::unknwCmd(args[0]);
     }
@@ -88,4 +122,19 @@ bool ConsoleHub::getWithPrefix(std::string& input){
     std::cout << "$ ";
     getline(std::cin, input);
     return true;
+}
+
+void ConsoleHub::deleteCmd(std::string const& str){
+    std::vector<std::string> eachArgs = Utils::split(str, ' ');
+    if(Utils::hasEnoughParams(eachArgs, 2)){
+        std::string varName = eachArgs[1];
+        if(exists(varName)){
+            definedVars.erase(varName);
+            Printer::deleteVar(varName);
+        }else{
+            Printer::doesNotExists(varName);
+        }
+    }else{
+        Printer::printParamsError(eachArgs.size());
+    }
 }
