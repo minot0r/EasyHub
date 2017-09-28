@@ -16,7 +16,7 @@ void ConsoleHub::affMsg(){
     display.append("\n");
 
     std::string help = " | define a new var to the hub with: define varname path type [cd, exec]\n"
-    " | load a created var with load varname\n"
+    " | execute a created var with exc varname\n"
     " | finally delete a var with delete varname\n\n";
 
     std::cout << display << std::endl << help << std::endl;
@@ -81,15 +81,29 @@ std::string ConsoleHub::getPath(std::string const& var){
     }
 }
 
-void ConsoleHub::load(std::string const& str){
+std::string ConsoleHub::getType(std::string const& var){
+    std::map<std::string, std::string[2]>::iterator pos = definedVars.find(var);
+    if (pos != definedVars.end()){
+        std::string value[2] = pos->second;
+        return value[1];
+    }
+}
+
+void ConsoleHub::exec(std::string const& str){
     std::vector<std::string> eachArgs = Utils::split(str, ' ');
     if(Utils::hasEnoughParams(eachArgs, 2)){
         if(exists(eachArgs[1])){
-            std::string path("start cmd /K \"cd /d ");
-            path.append(getPath(eachArgs[1]));
-            path.append("\"");
-            std::cout << path << std::endl;
-            system(path.c_str());
+            if(getType(eachArgs[1]) == "cd"){
+                std::string path("start cmd /K \"cd /d ");
+                path.append(getPath(eachArgs[1]));
+                path.append("\"");
+                system(path.c_str());
+            }else{
+                std::string path("start /K \"");
+                path.append(getPath(eachArgs[1]));
+                path.append("\"");
+                system(path.c_str());
+            }
         }
     }else{
         Printer::printParamsError(eachArgs.size());
@@ -109,8 +123,8 @@ void ConsoleHub::onCommand(std::vector<std::string> const& args, std::string con
         defineNew(input);
     }else if(args[0] == "exit"){
         exit(0);
-    }else if(args[0] ==  "load"){
-        load(input);
+    }else if(args[0] ==  "exc"){
+        exec(input);
     }else if(args[0] == "delete"){
         deleteCmd(input);
     }else{

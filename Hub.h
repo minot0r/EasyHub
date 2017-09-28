@@ -11,7 +11,7 @@ class ConsoleHub{
         void affMsg();
         void listenInputs();
         void defineNew(std::string args);
-        void load(std::string const& str);
+        void exec(std::string const& str);
         void onCommand(std::vector<std::string> const& args, std::string const& input);
         void deleteCmd(std::string const& str);
 
@@ -22,6 +22,7 @@ class ConsoleHub{
         std::string version = "1.0";
         bool exists(std::string const& var);
         std::string getPath(std::string const& var);
+        std::string getType(std::string const& var);
 
 };
 
