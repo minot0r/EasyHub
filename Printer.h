@@ -13,6 +13,7 @@ class Printer{
         static void unknwCmd(std::string const& cmd);
         static void deleteVar(std::string const& var);
         static void doesNotExists(std::string const& var);
+        static void couldNotLoadFile();
 
 };
 

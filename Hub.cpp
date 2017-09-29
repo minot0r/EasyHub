@@ -49,7 +49,7 @@ void ConsoleHub::defineNew(std::string args){
         if(Utils::hasEnoughParams(eachArgs, 4)){
             define(Parser::getVarName(args), Parser::getPath(args), Parser::getType(args));
         }else{
-            Printer::printParamsError(eachArgs.size());
+            Printer::printParamsError(eachArgs.size(), 4);
         }
     }else{
 
@@ -59,7 +59,7 @@ void ConsoleHub::defineNew(std::string args){
         if(Utils::hasEnoughParams(eachArgs, 4)){
             define(eachArgs[1], eachArgs[2], eachArgs[3]);
         }else{
-            Printer::printParamsError(eachArgs.size());
+            Printer::printParamsError(eachArgs.size(), 4);
         }
     }
 }
@@ -106,7 +106,7 @@ void ConsoleHub::exec(std::string const& str){
             }
         }
     }else{
-        Printer::printParamsError(eachArgs.size());
+        Printer::printParamsError(eachArgs.size(), 2);
     }
 }
 
@@ -149,6 +149,50 @@ void ConsoleHub::deleteCmd(std::string const& str){
             Printer::doesNotExists(varName);
         }
     }else{
-        Printer::printParamsError(eachArgs.size());
+        Printer::printParamsError(eachArgs.size(), 2);
+    }
+}
+
+void ConsoleHub::loadFile(std::string const& str){
+    if(!Utils::contains(path, "\"")){
+        std::vector<std::string> eachArgs = Utils::split(str, ' ');
+        if(Utils::hasEnoughParams(eachArgs, 2)){
+            if(!Utils::loadFile(eachArgs[0], eachArgs[1]).empty()){
+
+            }else{
+                Printer::cannotLoadFile();
+            }
+        }else{
+            Printer::printParamsError(eachArgs.size(), 2);
+        }
+    }else{
+        std::string path(Parser::getBrackPath(str));
+        std::vector<std::string> eachArgs = Utils::split(Parser::subtractBrackPath(str), ' ');
+        Utils::insertAt(eachArgs, 1, path);
+
+        if(Utils::hasEnoughParams(eachArgs, 2)){
+
+        }else{
+            Printer::printParamsError(eachArgs.size(), 2);
+        }
+    }
+}
+
+void ConsoleHub::load(std::string const& str){
+    std::vector<std::string> eachLine = Utils::split(str, '\n');
+    if(eachLine.size > 0 && !Utils::containsAtIndex(eachLine[0], " ", 0)){
+        string varName();
+        string path();
+        string type();
+        int last();
+        for(int i(0); i < eachLine.size(); i++){
+            if(Utils::containsAtIndex(eachLine[i], " ", 0)){
+                varName = eachLine
+            }else{
+
+            }
+        }
+    }else{
+
     }
 }

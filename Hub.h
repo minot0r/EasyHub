@@ -10,10 +10,6 @@ class ConsoleHub{
     public :
         void affMsg();
         void listenInputs();
-        void defineNew(std::string args);
-        void exec(std::string const& str);
-        void onCommand(std::vector<std::string> const& args, std::string const& input);
-        void deleteCmd(std::string const& str);
 
     private:
         std::map<std::string, std::string[2]> definedVars;
@@ -23,6 +19,13 @@ class ConsoleHub{
         bool exists(std::string const& var);
         std::string getPath(std::string const& var);
         std::string getType(std::string const& var);
+        void defineNew(std::string args);
+        void exec(std::string const& str);
+        void onCommand(std::vector<std::string> const& args, std::string const& input);
+        void deleteCmd(std::string const& str);
+        void saveInFile(std::string const& str);
+        void loadFile(std::string const& str);
+        void load(std::string const& str);
 
 };
 

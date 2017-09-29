@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <fstream>
 
 void Utils::toLowerCase(std::string toLow){
     std::transform(toLow.begin(), toLow.end(), toLow.begin(), ::tolower);
@@ -94,5 +95,27 @@ bool Utils::hasEnoughParams(std::vector<std::string> const& vec, int const& para
         return true;
     }else{
         return false;
+    }
+}
+
+bool Utils::saveFile(std::string const& path, std::string const& str){
+    ofstream outFlux(path.c_str());
+    if(outFlux){
+        outFlux << str << endl;
+    }else{
+        return false;
+    }
+}
+
+std::string Utils::loadFile(std::string const& path, std::string& str){
+    ifstream inFlux(path.c_str());
+    std::string temp();
+    if(inFlux){
+        while(getline(fichier, temp)){
+            str.append(temp);
+        }
+        return str;
+    }else{
+        return; // returns empty string
     }
 }

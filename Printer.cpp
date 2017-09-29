@@ -3,8 +3,12 @@
 #include <string>
 #include <iostream>
 
-void Printer::printParamsError(int const& paramsLen){
-    std::cout << " Error while aptempting to create a new var: parameters error (" << paramsLen << ").\n type help to see the list of commands." << std::endl;
+void Printer::printParamsError(int const& paramsLen, int const& needed){
+    if(paramsLen < needed){
+        std::cout << " Error: not enough parameters (" << paramsLen << ").\n type help to see the list of commands." << std::endl;
+    }else{
+        std::cout << " Error: too many parameters (" << paramsLen << ").\n type help to see the list of commands." << std::endl;
+    }
 }
 
 void Printer::successCreated(std::string const& var, std::string const& path, std::string const& type){
@@ -25,4 +29,8 @@ void Printer::deleteVar(std::string const& var){
 
 void Printer::doesNotExists(std::string const& var){
     std::cout << " Error: var \"" << var << "\" does not exist." << std::endl;
+}
+
+void Printer::couldNotLoadFile(){
+    std::cout << " Could not load the file." << std::endl;
 }
