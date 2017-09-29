@@ -27,8 +27,10 @@ bool Utils::contains(std::string const& container, std::string const& contained)
 
 void Utils::removeBlank(std::vector<std::string> &vec){
     for(int i(0); i < vec.size(); i++){
-        if(vec[i] == ""){
+        if(vec[i].empty()){
             vec.erase(vec.begin()+i);
+            removeBlank(vec);
+            break;
         }
     }
 }
