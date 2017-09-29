@@ -99,7 +99,7 @@ void ConsoleHub::exec(std::string const& str){
                 path.append("\"");
                 system(path.c_str());
             }else{
-                std::string path("start /K \"");
+                std::string path("start cmd /K \"");
                 path.append(getPath(eachArgs[1]));
                 path.append("\"");
                 system(path.c_str());
