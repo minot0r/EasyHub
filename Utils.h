@@ -17,7 +17,7 @@ class Utils{
         static void removeBlank(std::vector<std::string>& vec);
         static bool hasEnoughParams(std::vector<std::string> const& vec, int const& paramsLen);
         static bool saveFile(std::string const& path, std::string const& str);
-        static std::string loadFile(std::string const& path, std::string& str);
+        static bool readFile(std::string const& path, std::string& str);
 };
 
 #endif // UTILS_H_INCLUDED

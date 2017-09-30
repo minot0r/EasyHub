@@ -99,23 +99,24 @@ bool Utils::hasEnoughParams(std::vector<std::string> const& vec, int const& para
 }
 
 bool Utils::saveFile(std::string const& path, std::string const& str){
-    ofstream outFlux(path.c_str());
+    std::ofstream outFlux(path.c_str());
     if(outFlux){
-        outFlux << str << endl;
+        outFlux << str << std::endl;
     }else{
         return false;
     }
 }
 
-std::string Utils::loadFile(std::string const& path, std::string& str){
-    ifstream inFlux(path.c_str());
-    std::string temp();
+bool Utils::readFile(std::string const& path, std::string& str){
+    std::ifstream inFlux(path.c_str());
+    std::string temp;
     if(inFlux){
-        while(getline(fichier, temp)){
+        while(std::getline(inFlux, temp)){
             str.append(temp);
+            str.append("\n");
         }
-        return str;
+        return true;
     }else{
-        return; // returns empty string
+        return false;
     }
 }

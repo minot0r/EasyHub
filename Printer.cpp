@@ -34,3 +34,7 @@ void Printer::doesNotExists(std::string const& var){
 void Printer::couldNotLoadFile(){
     std::cout << " Could not load the file." << std::endl;
 }
+
+void Printer::fetchFile(std::string const& var, std::string const& path, std::string const& type){
+    std::cout << std::endl << " + Fetched var \"" << var << "\" connecting to path " << path << " with method " << type << "."  << std::endl;
+}
