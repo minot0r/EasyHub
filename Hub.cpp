@@ -2,6 +2,7 @@
 #include "Utils.h"
 #include "Parser.h"
 #include "Printer.h"
+#include "Var.h"
 
 #include <stdlib.h>
 #include <string>
@@ -26,14 +27,12 @@ void ConsoleHub::affMsg(){
 
 void ConsoleHub::define(std::string const& varName, std::string const& path, std::string const& type){
     if(type == "cd" || type == "exec"){
-        std::string arr[2];
-        arr[0] = path;
-        arr[1] = type;
+        Var var(varName, path, type);
         if(exists(varName)){
-            definedVars.erase(varName);
-            definedVars.insert(std::pair<std::string, std::string[2]>(varName, arr));
+            definedVars.erase(definedVars.begin() + getVar(varName));
+            definedVars.push_back(var);
         }else{
-            definedVars.insert(std::pair<std::string, std::string[2]>(varName, arr));
+            definedVars.push_back(var);
         }
     }else{
         Printer::typeError(type, varName);
@@ -66,8 +65,8 @@ void ConsoleHub::defineNew(std::string args){
 }
 
 bool ConsoleHub::exists(std::string const& var){
-    for(std::map<std::string, std::string[2]>::iterator it = definedVars.begin(); it != definedVars.end(); it++){
-        if(it->first == var){
+    for(int i(0); i < definedVars.size(); i++){
+        if(definedVars[i].getName() == var){
             return true;
         }
     }
@@ -75,18 +74,19 @@ bool ConsoleHub::exists(std::string const& var){
 }
 
 std::string ConsoleHub::getPath(std::string const& var){
-    std::map<std::string, std::string[2]>::iterator pos = definedVars.find(var);
-    if (pos != definedVars.end()){
-        std::string value[2] = pos->second;
-        return value[0];
+    for(int i(0); i < definedVars.size(); i++){
+        if(definedVars[i].getName() == var) return definedVars[i].getPath();
     }
 }
 
 std::string ConsoleHub::getType(std::string const& var){
-    std::map<std::string, std::string[2]>::iterator pos = definedVars.find(var);
-    if (pos != definedVars.end()){
-        std::string value[2] = pos->second;
-        return value[1];
+    for(int i(0); i < definedVars.size(); i++){
+        if(definedVars[i].getName() == var) return definedVars[i].getType();
+    }
+}
+int ConsoleHub::getVar(std::string const& var){
+    for(int i(0); i < definedVars.size(); i++){
+        if(definedVars[i].getName() == var) return i;
     }
 }
 
@@ -130,6 +130,8 @@ void ConsoleHub::onCommand(std::vector<std::string> const& args, std::string con
         deleteCmd(input);
     }else if(args[0] == "load"){
         loadFile(input);
+    }else if(args[0] == "save"){
+
     }else{
         Printer::unknwCmd(args[0]);
     }
@@ -146,7 +148,7 @@ void ConsoleHub::deleteCmd(std::string const& str){
     if(Utils::hasEnoughParams(eachArgs, 2)){
         std::string varName = eachArgs[1];
         if(exists(varName)){
-            definedVars.erase(varName);
+            definedVars.erase(definedVars.begin() + getVar(varName));
             Printer::deleteVar(varName);
         }else{
             Printer::doesNotExists(varName);
