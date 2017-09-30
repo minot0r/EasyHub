@@ -17,7 +17,7 @@ class ConsoleHub{
         std::vector<Var> definedVars;
         void define(std::string const& varName, std::string const& path, std::string const& type);
         bool getWithPrefix(std::string& input);
-        std::string version = "1.1";
+        std::string version = "1.5";
         bool exists(std::string const& var);
         std::string getPath(std::string const& var);
         std::string getType(std::string const& var);
@@ -29,7 +29,7 @@ class ConsoleHub{
         void saveInFile(std::string const& str);
         void loadFile(std::string const& str);
         void load(std::string const& str);
-
+        void affHelp();
 };
 
 #endif // HUB_H_INCLUDED

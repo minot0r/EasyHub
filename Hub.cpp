@@ -14,15 +14,22 @@ void ConsoleHub::affMsg(){
 
     std::string display = "Easy Hub (C++) win v";
     display.append(version);
-    display.append("\n");
 
-    std::string help = " | define a new var to the hub with: define varname path type [cd, exec]\n"
-    " | execute a created var with exc varname\n"
-    " | finally delete a var with delete varname\n\n";
+    std::cout << display << std::endl;
 
-    std::cout << display << std::endl << help << std::endl;
+    affHelp();
 
+}
 
+void ConsoleHub::affHelp(){
+    std::string help = "\n | define a new var to the hub with: define varname path type [cd, exec]\n"
+        " | execute a created var with: exc varname\n"
+        " | delete a var with: delete varname\n"
+        " | load a file with: load path\n"
+        " | save a file with: save path\n"
+        " | note that if the path contains spaces you can add quotes\n\n";
+
+    std::cout << help << std::endl;
 }
 
 void ConsoleHub::define(std::string const& varName, std::string const& path, std::string const& type){
@@ -126,6 +133,7 @@ void ConsoleHub::onCommand(std::vector<std::string> const& args, std::string con
     else if(args[0] == "delete") deleteCmd(input);
     else if(args[0] == "load") loadFile(input);
     else if(args[0] == "save") saveInFile(input);
+    else if(args[0] == "help") affHelp();
     else Printer::unknwCmd(args[0]);
 }
 
