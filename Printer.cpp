@@ -35,6 +35,14 @@ void Printer::couldNotLoadFile(){
     std::cout << " Could not load the file." << std::endl;
 }
 
+void Printer::couldNotSaveFile(){
+    std::cout << " Could not save the file." << std::endl;
+}
+
 void Printer::fetchFile(std::string const& var, std::string const& path, std::string const& type){
     std::cout << std::endl << " + Fetched var \"" << var << "\" connecting to path " << path << " with method " << type << "."  << std::endl;
+}
+
+void Printer::savedFile(std::string const& path){
+    std::cout << " Saved file to path: " << path << "." << std::endl;
 }

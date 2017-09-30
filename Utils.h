@@ -1,6 +1,8 @@
 #ifndef UTILS_H_INCLUDED
 #define UTILS_H_INCLUDED
 
+#include "Var.h"
+
 #include <string>
 #include <vector>
 
@@ -16,7 +18,7 @@ class Utils{
         static void insertAt(std::vector<std::string>& vec, int const& index, std::string const& value);
         static void removeBlank(std::vector<std::string>& vec);
         static bool hasEnoughParams(std::vector<std::string> const& vec, int const& paramsLen);
-        static bool saveFile(std::string const& path, std::string const& str);
+        static bool saveFile(std::string const& path, std::vector<Var> vars);
         static bool readFile(std::string const& path, std::string& str);
 };
 

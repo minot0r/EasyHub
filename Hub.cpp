@@ -120,21 +120,13 @@ void ConsoleHub::listenInputs(){
 }
 
 void ConsoleHub::onCommand(std::vector<std::string> const& args, std::string const& input){
-    if(args[0] == "define"){
-        defineNew(input);
-    }else if(args[0] == "exit"){
-        exit(0);
-    }else if(args[0] ==  "exc"){
-        exec(input);
-    }else if(args[0] == "delete"){
-        deleteCmd(input);
-    }else if(args[0] == "load"){
-        loadFile(input);
-    }else if(args[0] == "save"){
-
-    }else{
-        Printer::unknwCmd(args[0]);
-    }
+    if(args[0] == "define") defineNew(input);
+    else if(args[0] == "exit") exit(0);
+    else if(args[0] ==  "exc") exec(input);
+    else if(args[0] == "delete") deleteCmd(input);
+    else if(args[0] == "load") loadFile(input);
+    else if(args[0] == "save") saveInFile(input);
+    else Printer::unknwCmd(args[0]);
 }
 
 bool ConsoleHub::getWithPrefix(std::string& input){
@@ -199,6 +191,38 @@ void ConsoleHub::load(std::string const& str){
             Printer::fetchFile(eachParams[0], eachParams[1], eachParams[2]);
         }else{
 
+        }
+    }
+}
+
+void ConsoleHub::saveInFile(std::string const& str){
+    if(!Utils::contains(str, "\"")){
+        std::vector<std::string> eachArgs = Utils::split(str, ' ');
+        if(Utils::hasEnoughParams(eachArgs, 2)){
+            std::string content;
+            std::string path(eachArgs[1].begin(), eachArgs[1].end());
+            if(Utils::saveFile(path, definedVars)){
+                Printer::savedFile(path);
+            }else{
+                Printer::couldNotLoadFile();
+            }
+        }else{
+            Printer::printParamsError(eachArgs.size(), 2);
+        }
+    }else{
+        std::string path(Parser::getBrackPath(str));
+        std::vector<std::string> eachArgs = Utils::split(Parser::subtractBrackPath(str), ' ');
+        Utils::insertAt(eachArgs, 1, path);
+
+        if(Utils::hasEnoughParams(eachArgs, 2)){
+            std::string content;
+            if(Utils::saveFile(path, definedVars)){
+                Printer::savedFile(path);
+            }else{
+                Printer::couldNotSaveFile();
+            }
+        }else{
+            Printer::printParamsError(eachArgs.size(), 2);
         }
     }
 }

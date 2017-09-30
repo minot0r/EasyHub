@@ -1,4 +1,5 @@
 #include "Utils.h"
+#include "Var.h"
 
 #include <algorithm>
 #include <string>
@@ -98,10 +99,13 @@ bool Utils::hasEnoughParams(std::vector<std::string> const& vec, int const& para
     }
 }
 
-bool Utils::saveFile(std::string const& path, std::string const& str){
+bool Utils::saveFile(std::string const& path, std::vector<Var> vars){
     std::ofstream outFlux(path.c_str());
     if(outFlux){
-        outFlux << str << std::endl;
+        for(int i(0); i < vars.size(); i++){
+            outFlux << vars[i].getName() << "|" << vars[i].getPath() << "|" << vars[i].getType() << std::endl;
+        }
+        return true;
     }else{
         return false;
     }

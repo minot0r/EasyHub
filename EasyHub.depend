@@ -11,7 +11,7 @@
 	<vector>
 	<map>
 
-1506779280 c:\c++\easyhub\hub.h
+1506787256 c:\c++\easyhub\hub.h
 	"Var.h"
 	<string>
 	<map>
@@ -22,7 +22,8 @@
 	<string>
 	"Hub.h"
 
-1506766190 c:\c++\easyhub\utils.h
+1506788134 c:\c++\easyhub\utils.h
+	"Var.h"
 	<string>
 	<vector>
 
@@ -104,6 +105,7 @@
 1506779761 c:\c++\easyhub\var.h
 	<string>
 
-1506779363 source:c:\c++\easyhub\var.cpp
+1506780105 source:c:\c++\easyhub\var.cpp
 	"Var.h"
+	<string>
 
