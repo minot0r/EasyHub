@@ -27,9 +27,16 @@ void ConsoleHub::affHelp(){
         " | delete a var with: delete varname\n"
         " | load a file with: load path\n"
         " | save a file with: save path\n"
+        " | list your vars with: ls\n"
         " | note that if the path contains spaces you can add quotes\n\n";
 
     std::cout << help << std::endl;
+}
+
+void ConsoleHub::ls(){
+    for(int i(0); i < definedVars.size(); i++){
+        std::cout << std::endl << " + Var: \"" << definedVars[i].getName() << "\" connecting to path " << definedVars[i].getPath() << " with method " << definedVars[i].getType() << std::endl;
+    }
 }
 
 void ConsoleHub::define(std::string const& varName, std::string const& path, std::string const& type){
@@ -134,6 +141,7 @@ void ConsoleHub::onCommand(std::vector<std::string> const& args, std::string con
     else if(args[0] == "load") loadFile(input);
     else if(args[0] == "save") saveInFile(input);
     else if(args[0] == "help") affHelp();
+    else if(args[0] == "ls") ls();
     else Printer::unknwCmd(args[0]);
 }
 
