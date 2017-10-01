@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1506793719 source:c:\c++\easyhub\hub.cpp
+1506869086 source:c:\c++\easyhub\hub.cpp
 	"Hub.h"
 	"Utils.h"
 	"Parser.h"
@@ -11,8 +11,9 @@
 	<vector>
 	<map>
 
-1506793562 c:\c++\easyhub\hub.h
+1506866751 c:\c++\easyhub\hub.h
 	"Var.h"
+	"EnvVar.h"
 	<string>
 	<map>
 	<vector>
@@ -22,8 +23,9 @@
 	<string>
 	"Hub.h"
 
-1506788134 c:\c++\easyhub\utils.h
+1506862163 c:\c++\easyhub\utils.h
 	"Var.h"
+	"EnvVar.h"
 	<string>
 	<vector>
 
@@ -36,16 +38,18 @@
 	<string>
 	<vector>
 
-1506788036 source:c:\c++\easyhub\utils.cpp
+1506866673 source:c:\c++\easyhub\utils.cpp
 	"Utils.h"
 	"Var.h"
+	"EnvVar.h"
+	"Printer.h"
 	<algorithm>
 	<string>
 	<vector>
 	<iostream>
 	<fstream>
 
-1506788707 c:\c++\easyhub\printer.h
+1506864982 c:\c++\easyhub\printer.h
 	<string>
 	<vector>
 
@@ -98,15 +102,24 @@
 	<string>
 	<iostream>
 
-1506788850 source:c:\c++\easyhub\printer.cpp
+1506867980 source:c:\c++\easyhub\printer.cpp
 	"Printer.h"
 	<string>
 	<iostream>
 
-1506779761 c:\c++\easyhub\var.h
+1506804815 c:\c++\easyhub\var.h
 	<string>
+	<vector>
 
 1506780105 source:c:\c++\easyhub\var.cpp
 	"Var.h"
+	<string>
+
+1506852327 c:\c++\easyhub\envvar.h
+	<string>
+	<vector>
+
+1506852386 source:c:\c++\easyhub\envvar.cpp
+	"EnvVar.h"
 	<string>
 

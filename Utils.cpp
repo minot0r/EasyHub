@@ -1,5 +1,7 @@
 #include "Utils.h"
 #include "Var.h"
+#include "EnvVar.h"
+#include "Printer.h"
 
 #include <algorithm>
 #include <string>
@@ -95,15 +97,19 @@ bool Utils::hasEnoughParams(std::vector<std::string> const& vec, int const& para
     if(vec.size() == paramsLen){
         return true;
     }else{
+        Printer::printParamsError(vec.size(), paramsLen);
         return false;
     }
 }
 
-bool Utils::saveFile(std::string const& path, std::vector<Var> vars){
+bool Utils::saveFile(std::string const& path, std::vector<Var> const& vars, std::vector<EnvVar> const& envVars){
     std::ofstream outFlux(path.c_str());
     if(outFlux){
         for(int i(0); i < vars.size(); i++){
-            outFlux << vars[i].getName() << "|" << vars[i].getPath() << "|" << vars[i].getType() << std::endl;
+            outFlux << "&|" << vars[i].getName() << "|" << vars[i].getPath() << "|" << vars[i].getType() << std::endl;
+        }
+        for(int i(0); i < envVars.size(); i++){
+            outFlux << "$|" << envVars[i].getName() << "|" << envVars[i].getPath() << "|" << envVars[i].getLevel() << std::endl;
         }
         return true;
     }else{
