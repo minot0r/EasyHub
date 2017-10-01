@@ -27,6 +27,13 @@ void ConsoleHub::listenInputs(){
     }
 }
 
+void ConsoleHub::tryLoadConfig(std::string const& path){
+    std::string content;
+    if(Utils::readFile(path, content)){
+        load(content);
+    }
+}
+
 void ConsoleHub::defineNew(std::string args){
     if(!Utils::contains(args, "\"")){
 
@@ -160,8 +167,7 @@ void ConsoleHub::affHelp(){
         " | add environment vars with: env add name path [override, none]\n"
         " | remove environment vars with: env remove name\n"
         " | start a command line with: cmd\n"
-        " | note that if the path contains spaces you can add quotes\n"
-        " | and some path does not allow the none parameter, you must override them\n\n";
+        " | note that if the path contains spaces you can add quotes\n\n";
 
     std::cout << help << std::endl;
 }
@@ -181,8 +187,9 @@ void ConsoleHub::env(std::string const& str){
         if(eachArgs.size() == 5){
             if(eachArgs[4] == LEVEL_OVERRIDE || eachArgs[4] == LEVEL_NONE){
                 if(eachArgs[1] == "add"){
-                    addToEnv(eachArgs[2], eachArgs[3], eachArgs[4]);
-                    Printer::successEnvCreated(eachArgs[2], eachArgs[3], eachArgs[4]);
+                    if(addToEnv(eachArgs[2], eachArgs[3], eachArgs[4])){
+                        Printer::successEnvCreated(eachArgs[2], eachArgs[3], eachArgs[4]);
+                    }
                 }else{
                     Printer::unknwSubCmd(eachArgs[1]);
                 }
@@ -205,8 +212,9 @@ void ConsoleHub::env(std::string const& str){
         Utils::insertAt(eachArgs, 3, path);
         if(Utils::hasEnoughParams(eachArgs, 5)){
             if(eachArgs[1] == "add"){
-                addToEnv(eachArgs[2], path, eachArgs[4]);
-                Printer::successEnvCreated(eachArgs[2], eachArgs[3], eachArgs[4]);
+                if(addToEnv(eachArgs[2], path, eachArgs[4])){
+                    Printer::successEnvCreated(eachArgs[2], eachArgs[3], eachArgs[4]);
+                }
             }else{
                 Printer::unknwSubCmd(eachArgs[1]);
             }
@@ -214,7 +222,7 @@ void ConsoleHub::env(std::string const& str){
     }
 }
 
-void ConsoleHub::addToEnv(std::string const& str, std::string const& path, std::string const& level){
+bool ConsoleHub::addToEnv(std::string const& str, std::string const& path, std::string const& level){
     EnvVar var(str, path, level);
     if(level == LEVEL_OVERRIDE){
         std::string toEnv(str + "=" + path );
@@ -224,15 +232,24 @@ void ConsoleHub::addToEnv(std::string const& str, std::string const& path, std::
             envVars.erase(envVars.begin() + getEnvVar(var.getName()));
             envVars.push_back(var);
         }
+        return true;
     }else if(level == LEVEL_NONE){
-        std::string toEnv(str + "=" + getenv(str.c_str()) + path);
-        _putenv(toEnv.c_str());
-        envVars.push_back(var);
-        if(!envContains(str)) envVars.push_back(var);
-        else{
-            envVars.erase(envVars.begin() + getEnvVar(var.getName()));
+        if(getenv(str.c_str())){
+            std::string toEnv(str + "=" + getenv(str.c_str()) + path);
+            _putenv(toEnv.c_str());
             envVars.push_back(var);
+            if(!envContains(str)) envVars.push_back(var);
+            else{
+                envVars.erase(envVars.begin() + getEnvVar(var.getName()));
+                envVars.push_back(var);
+            }
+            return true;
+        }else{
+            Printer::printEnvError();
+            return false;
         }
+    }else{
+        return false;
     }
 }
 

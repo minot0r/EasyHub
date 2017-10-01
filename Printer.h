@@ -22,6 +22,7 @@ class Printer{
         static void savedFile(std::string const& path);
         static void notFound(std::string const& var);
         static void successRemoved(std::string const& var);
+        static void printEnvError();
 
 };
 

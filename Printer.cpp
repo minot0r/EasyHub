@@ -50,11 +50,11 @@ void Printer::couldNotSaveFile(){
 }
 
 void Printer::fetchVar(std::string const& var, std::string const& path, std::string const& type){
-    std::cout << std::endl << " + Fetched var \"" << var << "\" connecting to path " << path << " with method " << type << "."  << std::endl;
+    std::cout << " + Fetched var \"" << var << "\" connecting to path " << path << " with method " << type << "." << std::endl << std::endl;
 }
 
 void Printer::fetchEnv(std::string const& var, std::string const& path, std::string const& type){
-    std::cout << std::endl << " + Fetched environment-var \"" << var << "\" with path " << path << ". (" << type << ")"  << std::endl;
+    std::cout << " + Fetched environment-var \"" << var << "\" with path " << path << ". (" << type << ")" << std::endl << std::endl;
 }
 
 void Printer::savedFile(std::string const& path){
@@ -67,4 +67,8 @@ void Printer::notFound(std::string const& var){
 
 void Printer::successRemoved(std::string const& var){
     std::cout << " Successfully removed the environment-var \"" << var << "\"." << std::endl;
+}
+
+void Printer::printEnvError(){
+    std::cout << " Error: the environment-var is not set." << std::endl;
 }

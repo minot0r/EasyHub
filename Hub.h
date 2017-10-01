@@ -28,13 +28,14 @@
 #define CMD_SAVE "save"
 #define CMD_CMD "cmd"
 
-#define VERSION "2.4"
+#define VERSION "2.6"
 
 class ConsoleHub{
 
     public : // These are the methods called by Main.cpp
         void affMsg();
         void listenInputs();
+        void tryLoadConfig(std::string const& path);
 
     private:
 
@@ -57,7 +58,7 @@ class ConsoleHub{
 
         // Sub-commands methods
 
-        void addToEnv(std::string const& str, std::string const& path, std::string const& level);
+        bool addToEnv(std::string const& str, std::string const& path, std::string const& level);
         void define(std::string const& varName, std::string const& path, std::string const& type);
         bool getWithPrefix(std::string& input);
         void load(std::string const& str);
