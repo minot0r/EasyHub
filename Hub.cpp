@@ -77,6 +77,7 @@ void ConsoleHub::onCommand(std::vector<std::string> const& args, std::string con
     else if(args[0] == CMD_HELP) affHelp();
     else if(args[0] == CMD_LS) ls();
     else if(args[0] == CMD_ENV) env(input);
+    else if(args[0] == CMD_CMD) system("start");
     else Printer::unknwCmd(args[0]);
 }
 
@@ -158,6 +159,7 @@ void ConsoleHub::affHelp(){
         " | list your vars with: ls\n"
         " | add environment vars with: env add name path [override, none]\n"
         " | remove environment vars with: env remove name\n"
+        " | start a command line with: cmd\n"
         " | note that if the path contains spaces you can add quotes\n"
         " | and some path does not allow the none parameter, you must override them\n\n";
 
@@ -218,13 +220,19 @@ void ConsoleHub::addToEnv(std::string const& str, std::string const& path, std::
         std::string toEnv(str + "=" + path );
         _putenv(toEnv.c_str());
         if(!envContains(str)) envVars.push_back(var);
-        else envVars.erase(envVars.begin() + getEnvVar(var.getName()));
+        else{
+            envVars.erase(envVars.begin() + getEnvVar(var.getName()));
+            envVars.push_back(var);
+        }
     }else if(level == LEVEL_NONE){
         std::string toEnv(str + "=" + getenv(str.c_str()) + path);
         _putenv(toEnv.c_str());
         envVars.push_back(var);
         if(!envContains(str)) envVars.push_back(var);
-        else envVars.erase(envVars.begin() + getEnvVar(var.getName()));
+        else{
+            envVars.erase(envVars.begin() + getEnvVar(var.getName()));
+            envVars.push_back(var);
+        }
     }
 }
 

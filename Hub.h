@@ -26,8 +26,9 @@
 #define CMD_EXECUTE "exc"
 #define CMD_LOAD "load"
 #define CMD_SAVE "save"
+#define CMD_CMD "cmd"
 
-#define VERSION "2.2"
+#define VERSION "2.4"
 
 class ConsoleHub{
 
