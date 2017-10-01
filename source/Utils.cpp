@@ -1,7 +1,7 @@
-#include "Utils.h"
-#include "Var.h"
-#include "EnvVar.h"
-#include "Printer.h"
+#include "../includes/Utils.h"
+#include "../includes/Var.h"
+#include "../includes/EnvVar.h"
+#include "../includes/Printer.h"
 
 #include <algorithm>
 #include <string>

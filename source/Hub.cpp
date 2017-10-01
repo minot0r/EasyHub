@@ -1,8 +1,8 @@
-#include "Hub.h"
-#include "Utils.h"
-#include "Parser.h"
-#include "Printer.h"
-#include "Var.h"
+#include "../includes/Hub.h"
+#include "../includes/Utils.h"
+#include "../includes/Parser.h"
+#include "../includes/Printer.h"
+#include "../includes/Var.h"
 
 #include <stdlib.h>
 #include <string>

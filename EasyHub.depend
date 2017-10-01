@@ -123,3 +123,74 @@
 	"EnvVar.h"
 	<string>
 
+1506893153 source:c:\c++\easyhub\source\envvar.cpp
+	"../includes/EnvVar.h"
+	<string>
+
+1506852327 c:\c++\easyhub\includes\envvar.h
+	<string>
+	<vector>
+
+1506893190 source:c:\c++\easyhub\source\hub.cpp
+	"../includes/Hub.h"
+	"../includes/Utils.h"
+	"../includes/Parser.h"
+	"../includes/Printer.h"
+	"../includes/Var.h"
+	<stdlib.h>
+	<string>
+	<iostream>
+	<vector>
+	<map>
+
+1506890378 c:\c++\easyhub\includes\hub.h
+	"Var.h"
+	"EnvVar.h"
+	<string>
+	<map>
+	<vector>
+
+1506804815 c:\c++\easyhub\includes\var.h
+	<string>
+	<vector>
+
+1506862163 c:\c++\easyhub\includes\utils.h
+	"Var.h"
+	"EnvVar.h"
+	<string>
+	<vector>
+
+1506543606 c:\c++\easyhub\includes\parser.h
+	<string>
+
+1506889567 c:\c++\easyhub\includes\printer.h
+	<string>
+	<vector>
+
+1506893198 source:c:\c++\easyhub\source\main.cpp
+	<iostream>
+	<string>
+	"../includes/Hub.h"
+
+1506893207 source:c:\c++\easyhub\source\parser.cpp
+	"../includes/Parser.h"
+	"../includes/Utils.h"
+	<string>
+	<vector>
+
+1506893221 source:c:\c++\easyhub\source\printer.cpp
+	"../includes/Printer.h"
+	<string>
+	<iostream>
+
+1506893245 source:c:\c++\easyhub\source\utils.cpp
+	"../includes/Utils.h"
+	"../includes/Var.h"
+	"../includes/EnvVar.h"
+	"../includes/Printer.h"
+	<algorithm>
+	<string>
+	<vector>
+	<iostream>
+	<fstream>
+
