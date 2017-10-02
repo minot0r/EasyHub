@@ -8,7 +8,7 @@
 #include <map>
 #include <vector>
 
-#define LEVEL_OVERRIDE "override"
+#define LEVEL_PATH "path"
 #define LEVEL_NONE "none"
 
 #define TYPE_CD "cd"

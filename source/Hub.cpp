@@ -185,7 +185,7 @@ void ConsoleHub::env(std::string const& str){
     std::vector<std::string> eachArgs = Utils::split(str, ' ');
     if(!Utils::contains(str, "\"")){
         if(eachArgs.size() == 5){
-            if(eachArgs[4] == LEVEL_OVERRIDE || eachArgs[4] == LEVEL_NONE){
+            if(eachArgs[4] == LEVEL_PATH || eachArgs[4] == LEVEL_NONE){
                 if(eachArgs[1] == "add"){
                     if(addToEnv(eachArgs[2], eachArgs[3], eachArgs[4])){
                         Printer::successEnvCreated(eachArgs[2], eachArgs[3], eachArgs[4]);
@@ -224,9 +224,9 @@ void ConsoleHub::env(std::string const& str){
 
 bool ConsoleHub::addToEnv(std::string const& str, std::string const& path, std::string const& level){
     EnvVar var(str, path, level);
-    if(level == LEVEL_OVERRIDE){
-        std::string toEnv(str + "=" + path );
-        _putenv(toEnv.c_str());
+    if(level == LEVEL_PATH){
+        std::string toEnv(path + ";");
+        _putenv((getenv("Path") + toEnv).c_str());
         if(!envContains(str)) envVars.push_back(var);
         else{
             envVars.erase(envVars.begin() + getEnvVar(var.getName()));
@@ -234,8 +234,7 @@ bool ConsoleHub::addToEnv(std::string const& str, std::string const& path, std::
         }
         return true;
     }else if(level == LEVEL_NONE){
-        if(getenv(str.c_str())){
-            std::string toEnv(str + "=" + getenv(str.c_str()) + path);
+            std::string toEnv(str + "=" + path);
             _putenv(toEnv.c_str());
             envVars.push_back(var);
             if(!envContains(str)) envVars.push_back(var);
@@ -244,10 +243,6 @@ bool ConsoleHub::addToEnv(std::string const& str, std::string const& path, std::
                 envVars.push_back(var);
             }
             return true;
-        }else{
-            Printer::printEnvError();
-            return false;
-        }
     }else{
         return false;
     }
