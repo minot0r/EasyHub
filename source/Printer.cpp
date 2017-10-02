@@ -65,8 +65,13 @@ void Printer::notFound(std::string const& var){
     std::cout << " Error: did not find the environment-var \"" << var << "\"." << std::endl;
 }
 
-void Printer::successRemoved(std::string const& var){
-    std::cout << " Successfully removed the environment-var \"" << var << "\"." << std::endl;
+void Printer::successRemoved(std::string const& var, std::string const& level){
+    if(level == "path"){
+        std::cout << " Successfully removed the environment-var \"" << var << "\".\n Please restart the app or the removal won't take effect." << std::endl;
+    }else{
+        std::cout << " Successfully removed the environment-var \"" << var << "\"." << std::endl;
+    }
+
 }
 
 void Printer::printEnvError(){

@@ -21,7 +21,7 @@ class Printer{
         static void fetchEnv(std::string const& var, std::string const& path, std::string const& type);
         static void savedFile(std::string const& path);
         static void notFound(std::string const& var);
-        static void successRemoved(std::string const& var);
+        static void successRemoved(std::string const& var, std::string const& level);
         static void printEnvError();
 
 };

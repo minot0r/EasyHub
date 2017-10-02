@@ -164,7 +164,7 @@ void ConsoleHub::affHelp(){
         " | load a file with: load path\n"
         " | save a file with: save path\n"
         " | list your vars with: ls\n"
-        " | add environment vars with: env add name path [override, none]\n"
+        " | add environment vars with: env add name path [path, none]\n"
         " | remove environment vars with: env remove name\n"
         " | start a command line with: cmd\n"
         " | note that if the path contains spaces you can add quotes\n\n";
@@ -196,10 +196,14 @@ void ConsoleHub::env(std::string const& str){
             }
         }else if(eachArgs.size() == 3){
             if(envContains(eachArgs[2])){
+                if(envVars[getEnvVar(eachArgs[2])].getLevel() == LEVEL_PATH){
+                    Printer::successRemoved(eachArgs[2], LEVEL_PATH);
+                }else{
+                    std::string var(eachArgs[2] + "=");
+                    putenv(var.c_str());
+                    Printer::successRemoved(eachArgs[2], LEVEL_NONE);
+                }
                 envVars.erase(envVars.begin() + getEnvVar(eachArgs[2]));
-                std::string var(eachArgs[2] + "=");
-                putenv(var.c_str());
-                Printer::successRemoved(eachArgs[2]);
             }else{
                 Printer::notFound(eachArgs[2]);
             }
@@ -225,8 +229,10 @@ void ConsoleHub::env(std::string const& str){
 bool ConsoleHub::addToEnv(std::string const& str, std::string const& path, std::string const& level){
     EnvVar var(str, path, level);
     if(level == LEVEL_PATH){
-        std::string toEnv(path + ";");
-        _putenv((getenv("Path") + toEnv).c_str());
+        std::string toEnv("PATH=");
+        toEnv.append(getenv("PATH"));
+        toEnv.append(";" + path + ";");
+        _putenv(toEnv.c_str());
         if(!envContains(str)) envVars.push_back(var);
         else{
             envVars.erase(envVars.begin() + getEnvVar(var.getName()));
