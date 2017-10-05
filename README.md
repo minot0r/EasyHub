@@ -11,7 +11,7 @@
 
 ### Create variable linked to path
 type: `define my_var "C:/My/Path" cd`
-*Be Careful*: - your variable cannot contains spaces,
+*Be Careful*: - your variable cannot contains spaces,  
 - the path parser accepts the '"' character in case of your path contains spaces
 - `cd` is the method, here cd is to open a Windows Command-Line linked to the path
 
@@ -30,12 +30,12 @@ There are two possibilities of environment variable
 type: `env remove my_var`
 
 ### Save variables in a config file
-config files can be whatever you want, in this example I'll use config.ezh
-type: `save C:/Users/minot0r/Desktop/config.ezh`
+config files can be whatever you want, in this example I'll use config.ezh  
+type: `save C:/Users/minot0r/Desktop/config.ezh`  
 *Tip*: The path can contains quotes '"'
 
 ### Load my config file
-type: `load C:/Users/minot0r/Desktop/config.ezh`
+type: `load C:/Users/minot0r/Desktop/config.ezh`  
 *Tip*: The path can contains quotes '"'
 
 ### Open a new windows command-line
