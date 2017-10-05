@@ -1,0 +1,275 @@
+# depslib dependency file v1.0
+1506890345 source:c:\c++\easyhub\hub.cpp
+	"Hub.h"
+	"Utils.h"
+	"Parser.h"
+	"Printer.h"
+	"Var.h"
+	<stdlib.h>
+	<string>
+	<iostream>
+	<vector>
+	<map>
+
+1506890378 c:\c++\easyhub\hub.h
+	"Var.h"
+	"EnvVar.h"
+	<string>
+	<map>
+	<vector>
+
+1506890141 source:c:\c++\easyhub\main.cpp
+	<iostream>
+	<string>
+	"Hub.h"
+
+1506862163 c:\c++\easyhub\utils.h
+	"Var.h"
+	"EnvVar.h"
+	<string>
+	<vector>
+
+1506543606 c:\c++\easyhub\parser.h
+	<string>
+
+1506543654 source:c:\c++\easyhub\parser.cpp
+	"Parser.h"
+	"Utils.h"
+	<string>
+	<vector>
+
+1506866673 source:c:\c++\easyhub\utils.cpp
+	"Utils.h"
+	"Var.h"
+	"EnvVar.h"
+	"Printer.h"
+	<algorithm>
+	<string>
+	<vector>
+	<iostream>
+	<fstream>
+
+1506889567 c:\c++\easyhub\printer.h
+	<string>
+	<vector>
+
+1506593225 source:x:\dev + outils\easyhub\main.cpp
+	<iostream>
+	<string>
+	"Hub.h"
+
+1506593366 x:\dev + outils\easyhub\hub.h
+	<string>
+	<map>
+	<vector>
+
+1506593225 source:x:\dev + outils\easyhub\parser.cpp
+	"Parser.h"
+	"Utils.h"
+	<string>
+	<vector>
+
+1506593225 x:\dev + outils\easyhub\parser.h
+	<string>
+
+1506593225 x:\dev + outils\easyhub\utils.h
+	<string>
+	<vector>
+
+1506593225 source:x:\dev + outils\easyhub\utils.cpp
+	"Utils.h"
+	<algorithm>
+	<string>
+	<vector>
+	<iostream>
+
+1506593452 source:x:\dev + outils\easyhub\hub.cpp
+	"Hub.h"
+	"Utils.h"
+	"Parser.h"
+	"Printer.h"
+	<stdlib.h>
+	<string>
+	<iostream>
+	<vector>
+
+1506593225 x:\dev + outils\easyhub\printer.h
+	<string>
+	<vector>
+
+1506593225 source:x:\dev + outils\easyhub\printer.cpp
+	"Printer.h"
+	<string>
+	<iostream>
+
+1506890497 source:c:\c++\easyhub\printer.cpp
+	"Printer.h"
+	<string>
+	<iostream>
+
+1506804815 c:\c++\easyhub\var.h
+	<string>
+	<vector>
+
+1506780105 source:c:\c++\easyhub\var.cpp
+	"Var.h"
+	<string>
+
+1506852327 c:\c++\easyhub\envvar.h
+	<string>
+	<vector>
+
+1506852386 source:c:\c++\easyhub\envvar.cpp
+	"EnvVar.h"
+	<string>
+
+1506893153 source:c:\c++\easyhub\source\envvar.cpp
+	"../includes/EnvVar.h"
+	<string>
+
+1506852327 c:\c++\easyhub\includes\envvar.h
+	<string>
+	<vector>
+
+1506965563 source:c:\c++\easyhub\source\hub.cpp
+	"../includes/Hub.h"
+	"../includes/Utils.h"
+	"../includes/Parser.h"
+	"../includes/Printer.h"
+	"../includes/Var.h"
+	<stdlib.h>
+	<string>
+	<iostream>
+	<vector>
+	<map>
+
+1506965653 c:\c++\easyhub\includes\hub.h
+	"Var.h"
+	"EnvVar.h"
+	<string>
+	<map>
+	<vector>
+
+1506804815 c:\c++\easyhub\includes\var.h
+	<string>
+	<vector>
+
+1506862163 c:\c++\easyhub\includes\utils.h
+	"Var.h"
+	"EnvVar.h"
+	<string>
+	<vector>
+
+1506543606 c:\c++\easyhub\includes\parser.h
+	<string>
+
+1506964169 c:\c++\easyhub\includes\printer.h
+	<string>
+	<vector>
+
+1506893198 source:c:\c++\easyhub\source\main.cpp
+	<iostream>
+	<string>
+	"../includes/Hub.h"
+
+1506893207 source:c:\c++\easyhub\source\parser.cpp
+	"../includes/Parser.h"
+	"../includes/Utils.h"
+	<string>
+	<vector>
+
+1506964581 source:c:\c++\easyhub\source\printer.cpp
+	"../includes/Printer.h"
+	<string>
+	<iostream>
+
+1506893245 source:c:\c++\easyhub\source\utils.cpp
+	"../includes/Utils.h"
+	"../includes/Var.h"
+	"../includes/EnvVar.h"
+	"../includes/Printer.h"
+	<algorithm>
+	<string>
+	<vector>
+	<iostream>
+	<fstream>
+
+1506933388 source:x:\dev + outils\easyhub\source\envvar.cpp
+	"../includes/EnvVar.h"
+	<string>
+
+1506933388 x:\dev + outils\easyhub\includes\envvar.h
+	<string>
+	<vector>
+
+1506933388 source:x:\dev + outils\easyhub\source\main.cpp
+	<iostream>
+	<string>
+	"../includes/Hub.h"
+
+1506946685 x:\dev + outils\easyhub\includes\hub.h
+	"Var.h"
+	"EnvVar.h"
+	<string>
+	<map>
+	<vector>
+
+1506933388 x:\dev + outils\easyhub\includes\var.h
+	<string>
+	<vector>
+
+1506933388 source:x:\dev + outils\easyhub\source\parser.cpp
+	"../includes/Parser.h"
+	"../includes/Utils.h"
+	<string>
+	<vector>
+
+1506933388 x:\dev + outils\easyhub\includes\parser.h
+	<string>
+
+1506933388 x:\dev + outils\easyhub\includes\utils.h
+	"Var.h"
+	"EnvVar.h"
+	<string>
+	<vector>
+
+1506933388 source:x:\dev + outils\easyhub\source\printer.cpp
+	"../includes/Printer.h"
+	<string>
+	<iostream>
+
+1506933388 x:\dev + outils\easyhub\includes\printer.h
+	<string>
+	<vector>
+
+1506933388 source:x:\dev + outils\easyhub\source\utils.cpp
+	"../includes/Utils.h"
+	"../includes/Var.h"
+	"../includes/EnvVar.h"
+	"../includes/Printer.h"
+	<algorithm>
+	<string>
+	<vector>
+	<iostream>
+	<fstream>
+
+1506933388 source:x:\dev + outils\easyhub\source\var.cpp
+	"../includes/Var.h"
+	<string>
+
+1506946854 source:x:\dev + outils\easyhub\source\hub.cpp
+	"../includes/Hub.h"
+	"../includes/Utils.h"
+	"../includes/Parser.h"
+	"../includes/Printer.h"
+	"../includes/Var.h"
+	<stdlib.h>
+	<string>
+	<iostream>
+	<vector>
+	<map>
+
+1506893254 source:c:\c++\easyhub\source\var.cpp
+	"../includes/Var.h"
+	<string>
+
