@@ -7,10 +7,10 @@
 
 ## How it works ?
 
-> There are different commands:
+There are different commands:
 
 ### Create variable linked to path
-type: `define my_var "C:/My/Path" cd`
+type: `define my_var "C:/My/Path" cd`  
 *Be Careful*: - your variable cannot contains spaces,  
 - the path parser accepts the '"' character in case of your path contains spaces
 - `cd` is the method, here cd is to open a Windows Command-Line linked to the path
