@@ -59,12 +59,12 @@ void ConsoleHub::exec(std::string const& str){
         path.append(getVPath(eachArgs[1]));
         path.append("\"");
         system(path.c_str());
-        return;
+    }else{
+        std::string path("start cmd /K \"");
+        path.append(getVPath(eachArgs[1]));
+        path.append("\"");
+        system(path.c_str());
     }
-    std::string path("start cmd /K \"");
-    path.append(getVPath(eachArgs[1]));
-    path.append("\"");
-    system(path.c_str());
 }
 
 void ConsoleHub::onCommand(std::vector<std::string> const& args, std::string const& input){
@@ -78,75 +78,77 @@ void ConsoleHub::onCommand(std::vector<std::string> const& args, std::string con
     else if(args[0] == CMD_LS) ls();
     else if(args[0] == CMD_ENV) env(input);
     else if(args[0] == CMD_CMD) system("start");
+    else if(args[0] == CMD_CLS) system("cls");
     else Printer::unknwCmd(args[0]);
 }
 
 void ConsoleHub::deleteCmd(std::string const& str){
     std::vector<std::string> eachArgs = Utils::split(str, ' ');
-    if(Utils::hasEnoughParams(eachArgs, 2)){
-        std::string varName = eachArgs[1];
-        if(vExists(varName)){
-            definedVars.erase(definedVars.begin() + getVar(varName));
-            Printer::deleteVar(varName);
-        }else{
-            Printer::doesNotExists(varName);
-        }
+    if(!Utils::hasEnoughParams(eachArgs, 2)) return;
+
+    std::string varName = eachArgs[1];
+    if(vExists(varName)){
+        definedVars.erase(definedVars.begin() + getVar(varName));
+        Printer::deleteVar(varName);
+        return;
     }
+    Printer::doesNotExists(varName);
+
 }
 
 void ConsoleHub::saveInFile(std::string const& str){
     if(!Utils::contains(str, "\"")){
         std::vector<std::string> eachArgs = Utils::split(str, ' ');
-        if(Utils::hasEnoughParams(eachArgs, 2)){
-            std::string content;
-            std::string path(eachArgs[1].begin(), eachArgs[1].end());
-            if(Utils::saveFile(path, definedVars, envVars)){
-                Printer::savedFile(path);
-            }else{
-                Printer::couldNotLoadFile();
-            }
+        if(!Utils::hasEnoughParams(eachArgs, 2)) return;
+
+        std::string content;
+        std::string path(eachArgs[1].begin(), eachArgs[1].end());
+        if(Utils::saveFile(path, definedVars, envVars)){
+            Printer::savedFile(path);
+            return;
         }
+        Printer::couldNotLoadFile();
     }else{
         std::string path(Parser::getBrackPath(str));
         std::vector<std::string> eachArgs = Utils::split(Parser::subtractBrackPath(str), ' ');
         Utils::insertAt(eachArgs, 1, path);
 
-        if(Utils::hasEnoughParams(eachArgs, 2)){
-            std::string content;
-            if(Utils::saveFile(path, definedVars, envVars)){
-                Printer::savedFile(path);
-            }else{
-                Printer::couldNotSaveFile();
-            }
+        if(!Utils::hasEnoughParams(eachArgs, 2)) return;
+
+        std::string content;
+        if(Utils::saveFile(path, definedVars, envVars)){
+            Printer::savedFile(path);
+            return;
         }
+        Printer::couldNotSaveFile();
     }
 }
 
 void ConsoleHub::loadFile(std::string const& str){
     if(!Utils::contains(str, "\"")){
         std::vector<std::string> eachArgs = Utils::split(str, ' ');
-        if(Utils::hasEnoughParams(eachArgs, 2)){
-            std::string content;
-            std::string path(eachArgs[1].begin(), eachArgs[1].end());
-            if(Utils::readFile(path, content)){
-                load(content);
-            }else{
-                Printer::couldNotLoadFile();
-            }
+        if(!Utils::hasEnoughParams(eachArgs, 2)) return;
+
+        std::string content;
+        std::string path(eachArgs[1].begin(), eachArgs[1].end());
+        if(Utils::readFile(path, content)){
+            load(content);
+            return;
         }
+        Printer::couldNotLoadFile();
     }else{
         std::string path(Parser::getBrackPath(str));
         std::vector<std::string> eachArgs = Utils::split(Parser::subtractBrackPath(str), ' ');
         Utils::insertAt(eachArgs, 1, path);
 
-        if(Utils::hasEnoughParams(eachArgs, 2)){
-            std::string content;
-            if(Utils::readFile(path, content)){
-                load(content);
-            }else{
-                Printer::couldNotLoadFile();
-            }
+        if(!Utils::hasEnoughParams(eachArgs, 2)) return;
+
+        std::string content;
+        if(Utils::readFile(path, content)){
+            load(content);
+            return;
         }
+        Printer::couldNotLoadFile();
     }
 }
 
@@ -178,28 +180,27 @@ void ConsoleHub::env(std::string const& str){
     std::vector<std::string> eachArgs = Utils::split(str, ' ');
     if(!Utils::contains(str, "\"")){
         if(eachArgs.size() == 5){
-            if(eachArgs[4] == LEVEL_PATH || eachArgs[4] == LEVEL_NONE){
-                if(eachArgs[1] == "add"){
-                    if(addToEnv(eachArgs[2], eachArgs[3], eachArgs[4])){
-                        Printer::successEnvCreated(eachArgs[2], eachArgs[3], eachArgs[4]);
-                    }
-                }else{
-                    Printer::unknwSubCmd(eachArgs[1]);
-                }
+            if(!(eachArgs[4] == LEVEL_PATH || eachArgs[4] == LEVEL_NONE)) return;
+
+            if(eachArgs[1] == "add"){
+                if(!addToEnv(eachArgs[2], eachArgs[3], eachArgs[4])) return;
+                    Printer::successEnvCreated(eachArgs[2], eachArgs[3], eachArgs[4]);
+                return;
             }
+            Printer::unknwSubCmd(eachArgs[1]);
         }else if(eachArgs.size() == 3){
             if(envContains(eachArgs[2])){
                 if(envVars[getEnvVar(eachArgs[2])].getLevel() == LEVEL_PATH){
                     Printer::successRemoved(eachArgs[2], LEVEL_PATH);
-                }else{
-                    std::string var(eachArgs[2] + "=");
-                    putenv(var.c_str());
-                    Printer::successRemoved(eachArgs[2], LEVEL_NONE);
+                    return;
                 }
+                std::string var(eachArgs[2] + "=");
+                putenv(var.c_str());
+                Printer::successRemoved(eachArgs[2], LEVEL_NONE);
                 envVars.erase(envVars.begin() + getEnvVar(eachArgs[2]));
-            }else{
-                Printer::notFound(eachArgs[2]);
+                return;
             }
+            Printer::notFound(eachArgs[2]);
         }else{
             Printer::printParamsError(eachArgs.size(), 0);
         }
@@ -207,15 +208,16 @@ void ConsoleHub::env(std::string const& str){
         std::string path(Parser::getBrackPath(str));
         eachArgs = Utils::split(Parser::subtractBrackPath(str), ' ');
         Utils::insertAt(eachArgs, 3, path);
-        if(Utils::hasEnoughParams(eachArgs, 5)){
-            if(eachArgs[1] == "add"){
-                if(addToEnv(eachArgs[2], path, eachArgs[4])){
-                    Printer::successEnvCreated(eachArgs[2], eachArgs[3], eachArgs[4]);
-                }
-            }else{
-                Printer::unknwSubCmd(eachArgs[1]);
-            }
+        if(!Utils::hasEnoughParams(eachArgs, 5)) return;
+
+        if(eachArgs[1] == "add"){
+            if(!addToEnv(eachArgs[2], path, eachArgs[4])) return;
+
+            Printer::successEnvCreated(eachArgs[2], eachArgs[3], eachArgs[4]);
+            return;
         }
+        Printer::unknwSubCmd(eachArgs[1]);
+
     }
 }
 
@@ -248,17 +250,18 @@ bool ConsoleHub::addToEnv(std::string const& str, std::string const& path, std::
 }
 
 void ConsoleHub::define(std::string const& varName, std::string const& path, std::string const& type){
-    if(type == TYPE_CD || type == TYPE_EXEC){
-        Var var(varName, path, type);
-        if(vExists(varName)){
-            definedVars.erase(definedVars.begin() + getVar(varName));
-            definedVars.push_back(var);
-        }else{
-            definedVars.push_back(var);
-        }
+    if(!(type == TYPE_CD || type == TYPE_EXEC) return;
+
+    Var var(varName, path, type);
+    if(vExists(varName)){
+        definedVars.erase(definedVars.begin() + getVar(varName));
+        definedVars.push_back(var);
     }else{
-        Printer::typeError(type, varName);
+        definedVars.push_back(var);
     }
+    return;
+
+    Printer::typeError(type, varName);
 }
 
 bool ConsoleHub::getWithPrefix(std::string& input){

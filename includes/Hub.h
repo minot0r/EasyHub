@@ -23,10 +23,11 @@
 #define CMD_DEFINE "define"
 #define CMD_DELETE "delete"
 #define CMD_EXIT "exit"
-#define CMD_EXECUTE "exc"
+#define CMD_EXECUTE "ex"
 #define CMD_LOAD "load"
 #define CMD_SAVE "save"
 #define CMD_CMD "cmd"
+#define CMD_CLS "cls"
 
 #define VERSION "2.7"
 
