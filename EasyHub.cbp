@@ -32,19 +32,19 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="EnvVar.cpp" />
-		<Unit filename="EnvVar.h" />
-		<Unit filename="Hub.cpp" />
-		<Unit filename="Hub.h" />
-		<Unit filename="Parser.cpp" />
-		<Unit filename="Parser.h" />
-		<Unit filename="Printer.cpp" />
-		<Unit filename="Printer.h" />
-		<Unit filename="Utils.cpp" />
-		<Unit filename="Utils.h" />
-		<Unit filename="Var.cpp" />
-		<Unit filename="Var.h" />
-		<Unit filename="main.cpp" />
+		<Unit filename="includes/EnvVar.h" />
+		<Unit filename="includes/Hub.h" />
+		<Unit filename="includes/Parser.h" />
+		<Unit filename="includes/Printer.h" />
+		<Unit filename="includes/Utils.h" />
+		<Unit filename="includes/Var.h" />
+		<Unit filename="source/EnvVar.cpp" />
+		<Unit filename="source/Hub.cpp" />
+		<Unit filename="source/Parser.cpp" />
+		<Unit filename="source/Printer.cpp" />
+		<Unit filename="source/Utils.cpp" />
+		<Unit filename="source/Var.cpp" />
+		<Unit filename="source/main.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

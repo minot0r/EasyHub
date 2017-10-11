@@ -12,10 +12,7 @@
 
 void ConsoleHub::affMsg(){
 
-    std::string display = "Easy Hub (C++) win v" VERSION;
-
-    std::cout << display << std::endl;
-
+    std::cout << "Easy Hub (C++) win v" VERSION << std::endl;
     affHelp();
 
 }
@@ -29,49 +26,45 @@ void ConsoleHub::listenInputs(){
 
 void ConsoleHub::tryLoadConfig(std::string const& path){
     std::string content;
-    if(Utils::readFile(path, content)){
-        load(content);
-    }
+    if(!Utils::readFile(path, content)) return;
+    load(content);
+    content.clear();
 }
 
 void ConsoleHub::defineNew(std::string args){
     if(!Utils::contains(args, "\"")){
+        if(!Utils::hasEnoughParams(Utils::split(args, ' '), 4)) return;
 
-        std::vector<std::string> eachArgs (Utils::split(args, ' '));
-
-        if(Utils::hasEnoughParams(eachArgs, 4)){
-            define(Parser::getVarName(args), Parser::getPath(args), Parser::getType(args));
-            Printer::successCreated(Parser::getVarName(args), Parser::getPath(args), Parser::getType(args));
-        }
+        define(Parser::getVarName(args), Parser::getPath(args), Parser::getType(args));
+        Printer::successCreated(Parser::getVarName(args), Parser::getPath(args), Parser::getType(args));
     }else{
 
         std::vector<std::string> eachArgs = Utils::split(Parser::subtractBrackPath(args), ' ');
         Utils::insertAt(eachArgs, 2, Parser::getBrackPath(args));
 
-        if(Utils::hasEnoughParams(eachArgs, 4)){
-            define(eachArgs[1], eachArgs[2], eachArgs[3]);
-            Printer::successCreated(eachArgs[1], eachArgs[2], eachArgs[3]);
-        }
+        if(!Utils::hasEnoughParams(eachArgs, 4)) return;
+
+        define(eachArgs[1], eachArgs[2], eachArgs[3]);
+        Printer::successCreated(eachArgs[1], eachArgs[2], eachArgs[3]);
     }
 }
 
 void ConsoleHub::exec(std::string const& str){
     std::vector<std::string> eachArgs = Utils::split(str, ' ');
-    if(Utils::hasEnoughParams(eachArgs, 2)){
-        if(vExists(eachArgs[1])){
-            if(getVType(eachArgs[1]) == "cd"){
-                std::string path("start cmd /K \"cd /d ");
-                path.append(getVPath(eachArgs[1]));
-                path.append("\"");
-                system(path.c_str());
-            }else{
-                std::string path("start cmd /K \"");
-                path.append(getVPath(eachArgs[1]));
-                path.append("\"");
-                system(path.c_str());
-            }
-        }
+    if(!Utils::hasEnoughParams(eachArgs, 2)) return;
+    if(!vExists(eachArgs[1])) return;
+
+    if(getVType(eachArgs[1]) == TYPE_CD){
+        std::string path("start cmd /K \"cd /d ");
+        path.append(getVPath(eachArgs[1]));
+        path.append("\"");
+        system(path.c_str());
+        return;
     }
+    std::string path("start cmd /K \"");
+    path.append(getVPath(eachArgs[1]));
+    path.append("\"");
+    system(path.c_str());
 }
 
 void ConsoleHub::onCommand(std::vector<std::string> const& args, std::string const& input){
