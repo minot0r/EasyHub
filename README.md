@@ -17,7 +17,7 @@ type: `define my_var "C:/My/Path" cd`
 - `cd` is the method, here cd is to open a Windows Command-Line linked to the path
 
 ### Create variable linked to executable
-type: `define my_var "C:/My/Path/some_executable.exe exec`
+type: `define my_var "C:/My/Path/some_executable.exe" exec`
 
 ### Delete a variable
 type: `delete my_var`
