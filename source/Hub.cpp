@@ -122,33 +122,25 @@ void ConsoleHub::saveInFile(std::string const& str){
 void ConsoleHub::loadFile(std::string const& str){
     std::string path;
     std::vector<std::string> eachArgs;
+    std::string content;
+
+    if(Utils::split(str, ' ').size() == 1) { Printer::printParamsError(1, 2); return; }
+
     if(!Utils::contains(str, "\"")){
-        std::vector<std::string> eachArgs = Utils::split(str, ' ');
-
-
-        std::string content;
-        std::string path(eachArgs[1].begin(), eachArgs[1].end());
-        if(Utils::readFile(path, content)){
-            load(content);
-            return;
-        }
-        Printer::couldNotLoadFile();
+        eachArgs = Utils::split(str, ' ');
+        path = eachArgs[1];
     }else{
-        std::string path(Parser::getBrackPath(str));
-        std::vector<std::string> eachArgs = Utils::split(Parser::subtractBrackPath(str), ' ');
+        path = Parser::getBrackPath(str);
+        eachArgs = Utils::split(Parser::subtractBrackPath(str), ' ');
         Utils::insertAt(eachArgs, 1, path);
-
-        if(!Utils::hasEnoughParams(eachArgs, 2)) return;
-
-        std::string content;
-        if(Utils::readFile(path, content)){
-            load(content);
-            return;
-        }
-
     }
 
     if(!Utils::hasEnoughParams(eachArgs, 2)) return;
+
+    if(Utils::readFile(path, content)){
+        load(content);
+        return;
+    }
 
     Printer::couldNotLoadFile();
 }
