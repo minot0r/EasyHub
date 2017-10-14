@@ -170,48 +170,38 @@ void ConsoleHub::ls(){
 }
 
 void ConsoleHub::env(std::string const& str){
-    std::vector<std::string> eachArgs = Utils::split(str, ' ');
-    if(!Utils::contains(str, "\"")){
-        if(eachArgs.size() == 5){
-            if(!(eachArgs[4] == LEVEL_PATH || eachArgs[4] == LEVEL_NONE)) return;
 
-            if(eachArgs[1] == "add"){
-                if(!addToEnv(eachArgs[2], eachArgs[3], eachArgs[4])) return;
-                    Printer::successEnvCreated(eachArgs[2], eachArgs[3], eachArgs[4]);
-                return;
-            }
-            Printer::unknwSubCmd(eachArgs[1]);
-        }else if(eachArgs.size() == 3){
-            if(envContains(eachArgs[2])){
-                if(envVars[getEnvVar(eachArgs[2])].getLevel() == LEVEL_PATH){
-                    Printer::successRemoved(eachArgs[2], LEVEL_PATH);
-                    return;
-                }
+    std::vector<std::string> eachArgs;
+
+    if(!Utils::contains(str, "\"")){
+        eachArgs = Utils::split(str, ' ');
+    }else{
+        eachArgs = Utils::split(Parser::subtractBrackPath(str), ' ');
+        std::string path = Parser::getBrackPath(str);
+        Utils::insertAt(eachArgs, 3, path);
+    }
+
+    if(eachArgs.size() == 5 && eachArgs[1] == "add"){
+        if(!(eachArgs[4] == LEVEL_PATH || eachArgs[4] == LEVEL_NONE)) return;
+        if(!addToEnv(eachArgs[2], eachArgs[3], eachArgs[4])) return;
+
+        Printer::successEnvCreated(eachArgs[2], eachArgs[3], eachArgs[4]);
+    }else if(eachArgs.size() == 3 && eachArgs[1] == "remove"){
+        if(envContains(eachArgs[2])){
+            if(envVars[getEnvVar(eachArgs[2])].getLevel() == LEVEL_PATH){
+                Printer::successRemoved(eachArgs[2], LEVEL_PATH);
+            }else{
                 std::string var(eachArgs[2] + "=");
                 putenv(var.c_str());
                 Printer::successRemoved(eachArgs[2], LEVEL_NONE);
-                envVars.erase(envVars.begin() + getEnvVar(eachArgs[2]));
-                return;
             }
-            Printer::notFound(eachArgs[2]);
-        }else{
-            Printer::printParamsError(eachArgs.size(), 0);
-        }
-    }else{
-        std::string path(Parser::getBrackPath(str));
-        eachArgs = Utils::split(Parser::subtractBrackPath(str), ' ');
-        Utils::insertAt(eachArgs, 3, path);
-        if(!Utils::hasEnoughParams(eachArgs, 5)) return;
-
-        if(eachArgs[1] == "add"){
-            if(!addToEnv(eachArgs[2], path, eachArgs[4])) return;
-
-            Printer::successEnvCreated(eachArgs[2], eachArgs[3], eachArgs[4]);
+            envVars.erase(envVars.begin() + getEnvVar(eachArgs[2]));
             return;
         }
-        Printer::unknwSubCmd(eachArgs[1]);
-
-    }
+      Printer::notFound(eachArgs[2]);
+  }else{
+    Printer::unknwSubCmd(eachArgs[1]);
+  }
 }
 
 bool ConsoleHub::addToEnv(std::string const& str, std::string const& path, std::string const& level){
