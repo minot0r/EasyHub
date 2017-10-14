@@ -273,11 +273,9 @@ void ConsoleHub::load(std::string const& str){
 
         if(eachParams[0] == VAR_SIGN){
             define(eachParams[1], eachParams[2], eachParams[3]);
-            return;
+        }else if(eachParams[0] == ENVVAR_SIGN){
+            addToEnv(eachParams[1], eachParams[2], eachParams[3]);
         }
-        addToEnv(eachParams[1], eachParams[2], eachParams[3]);
-
-
     }
 }
 
