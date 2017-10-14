@@ -131,7 +131,7 @@
 	<string>
 	<vector>
 
-1507983138 source:c:\c++\easyhub\source\hub.cpp
+1507998472 source:c:\c++\easyhub\source\hub.cpp
 	"../includes/Hub.h"
 	"../includes/Utils.h"
 	"../includes/Parser.h"
@@ -176,7 +176,7 @@
 	<string>
 	<vector>
 
-1507821314 source:c:\c++\easyhub\source\printer.cpp
+1508015983 source:c:\c++\easyhub\source\printer.cpp
 	"../includes/Printer.h"
 	<string>
 	<iostream>

@@ -52,7 +52,7 @@ void ConsoleHub::defineNew(std::string args){
 void ConsoleHub::exec(std::string const& str){
     std::vector<std::string> eachArgs = Utils::split(str, ' ');
     if(!Utils::hasEnoughParams(eachArgs, 2)) return;
-    if(!vExists(eachArgs[1])) return;
+    if(!vExists(eachArgs[1])) { Printer::doesNotExists(eachArgs[1]); return; }
 
     if(getVType(eachArgs[1]) == TYPE_CD){
         std::string path("start cmd /K \"cd /d ");
@@ -180,6 +180,8 @@ void ConsoleHub::env(std::string const& str){
         std::string path = Parser::getBrackPath(str);
         Utils::insertAt(eachArgs, 3, path);
     }
+
+    if(eachArgs.size() < 3) { Printer::printParamsError(eachArgs.size(), 0); return; }
 
     if(eachArgs.size() == 5 && eachArgs[1] == "add"){
         if(!(eachArgs[4] == LEVEL_PATH || eachArgs[4] == LEVEL_NONE)) return;

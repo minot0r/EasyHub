@@ -4,12 +4,12 @@
 #include <iostream>
 
 void Printer::printParamsError(int const& paramsLen, int const& needed){
-    if(paramsLen < needed){
-        std::cout << " Error: not enough parameters (" << paramsLen << ").\n type help to see the list of commands." << std::endl;
-    }else if(paramsLen > needed){
-        std::cout << " Error: too many parameters (" << paramsLen << ").\n type help to see the list of commands." << std::endl;
-    }else if(needed == 0){
+    if(needed == 0){
         std::cout << " Error: parameters error (" << paramsLen << ").\n type help to see the list of commands." << std::endl;
+    }else if(paramsLen > needed){
+        std::cout << " Error: too many parameters, needed: " << needed << " (" << paramsLen << ").\n type help to see the list of commands." << std::endl;
+    }else if(paramsLen < needed){
+        std::cout << " Error: not enough parameters, needed: " << needed << " (" << paramsLen << ").\n type help to see the list of commands." << std::endl;
     }
 }
 
