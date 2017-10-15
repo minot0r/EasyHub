@@ -84,12 +84,12 @@ std::string Printer::printHelp(std::map<std::string, std::string> help){
     std::string returnedValue;
 
     for(it = help.begin(); it != help.end(); it++){
-        if((it->second).size() >= 32){
+        if((it->second).size() >= 64){
             int times = ceil((it->second).size());
             returnedValue += it->first;
             for(int i = 0; i < times; i++){
-                if(!(i*32 > (it->second).size())){
-                    returnedValue += "\t" + (it->second).substr(i*32, 32) + "\n";
+                if(!(i*64 > (it->second).size())){
+                    returnedValue += "\t" + (it->second).substr(i*64, 64) + "\n";
                 }
             }
         }else{

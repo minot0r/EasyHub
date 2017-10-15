@@ -12,8 +12,7 @@
 
 void ConsoleHub::affMsg(){
 
-    std::cout << "Easy Hub (C++) win v" VERSION << std::endl;
-    affHelp();
+    std::cout << "Easy Hub (C++) win v" VERSION << std::endl << std::endl << "type help to start." << std::endl;
 
 }
 
@@ -146,20 +145,8 @@ void ConsoleHub::loadFile(std::string const& str){
 }
 
 void ConsoleHub::affHelp(){
-    /*std::string help = "\n | define a new var to the hub with: define varname path type [cd, exec]\n"
-        " | execute a created var with: exc varname\n"
-        " | delete a var with: delete varname\n"
-        " | load a file with: load path\n"
-        " | save a file with: save path\n"
-        " | list your vars with: ls\n"
-        " | add environment vars with: env add name path [path, none]\n"
-        " | remove environment vars with: env remove name\n"
-        " | start a command line with: cmd\n"
-        " | note that if the path contains spaces you can add quotes\n";*/
-
     std::map<std::string, std::string> cmdsHelp = ConsoleHub::init_map();
-
-    std::cout << Printer::printHelp(cmdsHelp) << std::endl;
+    std::cout << Printer::printHelp(cmdsHelp) << "NB: More documentation at https://github.com/minot0r/EasyHub/blob/README.md" << std::endl;
 }
 
 void ConsoleHub::ls(){
@@ -214,7 +201,7 @@ bool ConsoleHub::addToEnv(std::string const& str, std::string const& path, std::
         std::string toEnv("PATH=");
         toEnv.append(getenv("PATH"));
         toEnv.append(";" + path + ";");
-        _putenv(toEnv.c_str());
+        putenv(toEnv.c_str());
         if(!envContains(str)) envVars.push_back(var);
         else{
             envVars.erase(envVars.begin() + getEnvVar(var.getName()));
@@ -223,7 +210,7 @@ bool ConsoleHub::addToEnv(std::string const& str, std::string const& path, std::
         return true;
     }else if(level == LEVEL_NONE){
             std::string toEnv(str + "=" + path);
-            _putenv(toEnv.c_str());
+            putenv(toEnv.c_str());
             envVars.push_back(var);
             if(!envContains(str)) envVars.push_back(var);
             else{
@@ -317,10 +304,15 @@ int ConsoleHub::getEnvVar(std::string const& var){
 
 std::map<std::string, std::string> ConsoleHub::init_map(){
     std::map<std::string, std::string> m;
-    m["define"] = "define my_var \"C:/My/Path\" [cd, exec]12345678910111213141516171819";
-    m["ex"] = "ex my_var";
-    m["delete"] = "delete my_var";
-    m["load"] = "load my_var";
-    m["test"] = "azertyuiopqsdfghjklmwxcvbn123456789101";
+    m["define"] = "Create a new variable linked to a path or an executable, syntax: define my_var \"C:/My/Path\" [cd, exec]";
+    m["ex"] = "Execute a variable, syntax: ex my_var";
+    m["delete"] = "Delete a variable, syntax: delete my_var";
+    m["save"] = "Save a file with your variables, syntax: save C:/My/Path/config_file.ezh";
+    m["load"] = "Load a file with your variables, syntax: load C:/My/Path/config_file.ezh";
+    m["ls"] = "List all your variables";
+    m["env"] = "Create/Delete a environment variable, syntaxes: env add my_var C:/My/Path [path, none] | env remove my_var";
+    m["cmd"] = "Open a command-line";
+    m["cls"] = "Clear the console";
+
     return m;
 }

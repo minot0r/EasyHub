@@ -29,7 +29,7 @@
 #define CMD_CMD "cmd"
 #define CMD_CLS "cls"
 
-#define VERSION "2.7"
+#define VERSION "2.8"
 
 class ConsoleHub{
 
