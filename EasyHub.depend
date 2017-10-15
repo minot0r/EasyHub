@@ -131,7 +131,7 @@
 	<string>
 	<vector>
 
-1507998472 source:c:\c++\easyhub\source\hub.cpp
+1508080048 source:c:\c++\easyhub\source\hub.cpp
 	"../includes/Hub.h"
 	"../includes/Utils.h"
 	"../includes/Parser.h"
@@ -143,7 +143,7 @@
 	<vector>
 	<map>
 
-1507821314 c:\c++\easyhub\includes\hub.h
+1508076136 c:\c++\easyhub\includes\hub.h
 	"Var.h"
 	"EnvVar.h"
 	<string>
@@ -163,9 +163,10 @@
 1507821314 c:\c++\easyhub\includes\parser.h
 	<string>
 
-1507821314 c:\c++\easyhub\includes\printer.h
+1508076155 c:\c++\easyhub\includes\printer.h
 	<string>
 	<vector>
+	<map>
 
 1507821314 source:c:\c++\easyhub\source\main.cpp
 	"../includes/Hub.h"
@@ -176,10 +177,11 @@
 	<string>
 	<vector>
 
-1508015983 source:c:\c++\easyhub\source\printer.cpp
+1508083774 source:c:\c++\easyhub\source\printer.cpp
 	"../includes/Printer.h"
 	<string>
 	<iostream>
+	<math.h>
 
 1507821314 source:c:\c++\easyhub\source\utils.cpp
 	"../includes/Utils.h"

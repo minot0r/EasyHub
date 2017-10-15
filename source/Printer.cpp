@@ -2,6 +2,7 @@
 
 #include <string>
 #include <iostream>
+#include <math.h>
 
 void Printer::printParamsError(int const& paramsLen, int const& needed){
     if(needed == 0){
@@ -76,4 +77,26 @@ void Printer::successRemoved(std::string const& var, std::string const& level){
 
 void Printer::printEnvError(){
     std::cout << " Error: the environment-var is not set." << std::endl;
+}
+
+std::string Printer::printHelp(std::map<std::string, std::string> help){
+    std::map<std::string, std::string>::iterator it;
+    std::string returnedValue;
+
+    for(it = help.begin(); it != help.end(); it++){
+        if((it->second).size() >= 32){
+            int times = ceil((it->second).size());
+            returnedValue += it->first;
+            for(int i = 0; i < times; i++){
+                if(!(i*32 > (it->second).size())){
+                    returnedValue += "\t" + (it->second).substr(i*32, 32) + "\n";
+                }
+            }
+        }else{
+            returnedValue += it->first + "\t" + it->second + "\n";
+        }
+        returnedValue += "\n";
+    }
+
+    return returnedValue;
 }

@@ -146,7 +146,7 @@ void ConsoleHub::loadFile(std::string const& str){
 }
 
 void ConsoleHub::affHelp(){
-    std::string help = "\n | define a new var to the hub with: define varname path type [cd, exec]\n"
+    /*std::string help = "\n | define a new var to the hub with: define varname path type [cd, exec]\n"
         " | execute a created var with: exc varname\n"
         " | delete a var with: delete varname\n"
         " | load a file with: load path\n"
@@ -155,9 +155,11 @@ void ConsoleHub::affHelp(){
         " | add environment vars with: env add name path [path, none]\n"
         " | remove environment vars with: env remove name\n"
         " | start a command line with: cmd\n"
-        " | note that if the path contains spaces you can add quotes\n\n";
+        " | note that if the path contains spaces you can add quotes\n";*/
 
-    std::cout << help << std::endl;
+    std::map<std::string, std::string> cmdsHelp = ConsoleHub::init_map();
+
+    std::cout << Printer::printHelp(cmdsHelp) << std::endl;
 }
 
 void ConsoleHub::ls(){
@@ -311,4 +313,14 @@ int ConsoleHub::getEnvVar(std::string const& var){
     for(int i(0); i < envVars.size(); i++){
         if(envVars[i].getName() == var) return i;
     }
+}
+
+std::map<std::string, std::string> ConsoleHub::init_map(){
+    std::map<std::string, std::string> m;
+    m["define"] = "define my_var \"C:/My/Path\" [cd, exec]12345678910111213141516171819";
+    m["ex"] = "ex my_var";
+    m["delete"] = "delete my_var";
+    m["load"] = "load my_var";
+    m["test"] = "azertyuiopqsdfghjklmwxcvbn123456789101";
+    return m;
 }

@@ -44,6 +44,7 @@ class ConsoleHub{
 
         std::vector<Var> definedVars;
         std::vector<EnvVar> envVars;
+        std::map<std::string, std::string> init_map();
 
         // Commands methods
 
