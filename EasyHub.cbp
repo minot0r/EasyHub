@@ -13,7 +13,6 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
-					<Add option="-std=c++98" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -31,7 +30,6 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="includes/EnvVar.h" />
 		<Unit filename="includes/Hub.h" />

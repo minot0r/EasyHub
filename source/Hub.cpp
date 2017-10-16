@@ -146,7 +146,7 @@ void ConsoleHub::loadFile(std::string const& str){
 
 void ConsoleHub::affHelp(){
     std::map<std::string, std::string> cmdsHelp = ConsoleHub::init_map();
-    std::cout << Printer::printHelp(cmdsHelp) << "NB: More documentation at https://github.com/minot0r/EasyHub/blob/README.md" << std::endl;
+    std::cout << Printer::printHelp(cmdsHelp) << "NB: More documentation at https://github.com/minot0r/EasyHub/blob/master/README.md" << std::endl;
 }
 
 void ConsoleHub::ls(){
