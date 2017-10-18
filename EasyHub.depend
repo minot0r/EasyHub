@@ -279,7 +279,7 @@
 	<string>
 	<vector>
 
-1507718590 source:y:\dev + outils\easyhub\source\hub.cpp
+1508322804 source:y:\dev + outils\easyhub\source\hub.cpp
 	"../includes/Hub.h"
 	"../includes/Utils.h"
 	"../includes/Parser.h"
@@ -291,7 +291,7 @@
 	<vector>
 	<map>
 
-1507718590 y:\dev + outils\easyhub\includes\hub.h
+1508322804 y:\dev + outils\easyhub\includes\hub.h
 	"Var.h"
 	"EnvVar.h"
 	<string>
@@ -311,9 +311,10 @@
 1507718590 y:\dev + outils\easyhub\includes\parser.h
 	<string>
 
-1507718590 y:\dev + outils\easyhub\includes\printer.h
+1508322804 y:\dev + outils\easyhub\includes\printer.h
 	<string>
 	<vector>
+	<map>
 
 1507718590 source:y:\dev + outils\easyhub\source\parser.cpp
 	"../includes/Parser.h"

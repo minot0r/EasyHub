@@ -151,10 +151,10 @@ void ConsoleHub::affHelp(){
 
 void ConsoleHub::ls(){
     for(int i(0); i < definedVars.size(); i++){
-        std::cout << std::endl << " + Var: \"" << definedVars[i].getName() << "\" connecting to path " << definedVars[i].getPath() << " with method " << definedVars[i].getType() << std::endl;
+        std::cout << " + Var: \"" << definedVars[i].getName() << "\" connecting to path " << definedVars[i].getPath() << " with method " << definedVars[i].getType() << std::endl;
     }
     for(int i (0); i < envVars.size(); i++){
-        std::cout << std::endl << " + Environment-var: \"" << envVars[i].getName() << "\" with path " << envVars[i].getPath() << ". (" << envVars[i].getLevel() << ")" << std::endl;
+        std::cout << " + Environment-var: \"" << envVars[i].getName() << "\" with path " << envVars[i].getPath() << ". (" << envVars[i].getLevel() << ")" << std::endl;
     }
 }
 
