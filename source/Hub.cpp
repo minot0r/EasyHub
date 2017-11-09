@@ -12,7 +12,7 @@
 
 void ConsoleHub::affMsg(){
 
-    std::cout << "Easy Hub (C++) win v" VERSION << std::endl << std::endl << "type help to start." << std::endl;
+    std::cout << "SimplHub (C++) win v" VERSION << std::endl << std::endl << "type help to start." << std::endl;
 
 }
 

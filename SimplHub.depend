@@ -1,0 +1,422 @@
+# depslib dependency file v1.0
+1506890345 source:c:\c++\SimplHub\hub.cpp
+	"Hub.h"
+	"Utils.h"
+	"Parser.h"
+	"Printer.h"
+	"Var.h"
+	<stdlib.h>
+	<string>
+	<iostream>
+	<vector>
+	<map>
+
+1506890378 c:\c++\SimplHub\hub.h
+	"Var.h"
+	"EnvVar.h"
+	<string>
+	<map>
+	<vector>
+
+1506890141 source:c:\c++\SimplHub\main.cpp
+	<iostream>
+	<string>
+	"Hub.h"
+
+1506862163 c:\c++\SimplHub\utils.h
+	"Var.h"
+	"EnvVar.h"
+	<string>
+	<vector>
+
+1506543606 c:\c++\SimplHub\parser.h
+	<string>
+
+1506543654 source:c:\c++\SimplHub\parser.cpp
+	"Parser.h"
+	"Utils.h"
+	<string>
+	<vector>
+
+1506866673 source:c:\c++\SimplHub\utils.cpp
+	"Utils.h"
+	"Var.h"
+	"EnvVar.h"
+	"Printer.h"
+	<algorithm>
+	<string>
+	<vector>
+	<iostream>
+	<fstream>
+
+1506889567 c:\c++\SimplHub\printer.h
+	<string>
+	<vector>
+
+1506593225 source:x:\dev + outils\SimplHub\main.cpp
+	<iostream>
+	<string>
+	"Hub.h"
+
+1506593366 x:\dev + outils\SimplHub\hub.h
+	<string>
+	<map>
+	<vector>
+
+1506593225 source:x:\dev + outils\SimplHub\parser.cpp
+	"Parser.h"
+	"Utils.h"
+	<string>
+	<vector>
+
+1506593225 x:\dev + outils\SimplHub\parser.h
+	<string>
+
+1506593225 x:\dev + outils\SimplHub\utils.h
+	<string>
+	<vector>
+
+1506593225 source:x:\dev + outils\SimplHub\utils.cpp
+	"Utils.h"
+	<algorithm>
+	<string>
+	<vector>
+	<iostream>
+
+1506593452 source:x:\dev + outils\SimplHub\hub.cpp
+	"Hub.h"
+	"Utils.h"
+	"Parser.h"
+	"Printer.h"
+	<stdlib.h>
+	<string>
+	<iostream>
+	<vector>
+
+1506593225 x:\dev + outils\SimplHub\printer.h
+	<string>
+	<vector>
+
+1506593225 source:x:\dev + outils\SimplHub\printer.cpp
+	"Printer.h"
+	<string>
+	<iostream>
+
+1506890497 source:c:\c++\SimplHub\printer.cpp
+	"Printer.h"
+	<string>
+	<iostream>
+
+1506804815 c:\c++\SimplHub\var.h
+	<string>
+	<vector>
+
+1506780105 source:c:\c++\SimplHub\var.cpp
+	"Var.h"
+	<string>
+
+1506852327 c:\c++\SimplHub\envvar.h
+	<string>
+	<vector>
+
+1506852386 source:c:\c++\SimplHub\envvar.cpp
+	"EnvVar.h"
+	<string>
+
+1507821314 source:c:\c++\SimplHub\source\envvar.cpp
+	"../includes/EnvVar.h"
+	<string>
+
+1507821314 c:\c++\SimplHub\includes\envvar.h
+	<string>
+	<vector>
+
+1508096184 source:c:\c++\SimplHub\source\hub.cpp
+	"../includes/Hub.h"
+	"../includes/Utils.h"
+	"../includes/Parser.h"
+	"../includes/Printer.h"
+	"../includes/Var.h"
+	<stdlib.h>
+	<string>
+	<iostream>
+	<vector>
+	<map>
+
+1508096213 c:\c++\SimplHub\includes\hub.h
+	"Var.h"
+	"EnvVar.h"
+	<string>
+	<map>
+	<vector>
+
+1507821314 c:\c++\SimplHub\includes\var.h
+	<string>
+	<vector>
+
+1507821314 c:\c++\SimplHub\includes\utils.h
+	"Var.h"
+	"EnvVar.h"
+	<string>
+	<vector>
+
+1507821314 c:\c++\SimplHub\includes\parser.h
+	<string>
+
+1508095849 c:\c++\SimplHub\includes\printer.h
+	<string>
+	<vector>
+	<map>
+
+1507821314 source:c:\c++\SimplHub\source\main.cpp
+	"../includes/Hub.h"
+
+1507821314 source:c:\c++\SimplHub\source\parser.cpp
+	"../includes/Parser.h"
+	"../includes/Utils.h"
+	<string>
+	<vector>
+
+1508095841 source:c:\c++\SimplHub\source\printer.cpp
+	"../includes/Printer.h"
+	<string>
+	<iostream>
+	<math.h>
+
+1507821314 source:c:\c++\SimplHub\source\utils.cpp
+	"../includes/Utils.h"
+	"../includes/Var.h"
+	"../includes/EnvVar.h"
+	"../includes/Printer.h"
+	<algorithm>
+	<string>
+	<vector>
+	<iostream>
+	<fstream>
+
+1507714990 source:x:\dev + outils\SimplHub\source\envvar.cpp
+	"../includes/EnvVar.h"
+	<string>
+
+1507714990 x:\dev + outils\SimplHub\includes\envvar.h
+	<string>
+	<vector>
+
+1507715094 source:x:\dev + outils\SimplHub\source\main.cpp
+	"../includes/Hub.h"
+
+1507732418 x:\dev + outils\SimplHub\includes\hub.h
+	"Var.h"
+	"EnvVar.h"
+	<string>
+	<map>
+	<vector>
+
+1507714990 x:\dev + outils\SimplHub\includes\var.h
+	<string>
+	<vector>
+
+1507714990 source:x:\dev + outils\SimplHub\source\parser.cpp
+	"../includes/Parser.h"
+	"../includes/Utils.h"
+	<string>
+	<vector>
+
+1507714990 x:\dev + outils\SimplHub\includes\parser.h
+	<string>
+
+1507714990 x:\dev + outils\SimplHub\includes\utils.h
+	"Var.h"
+	"EnvVar.h"
+	<string>
+	<vector>
+
+1507731914 source:x:\dev + outils\SimplHub\source\printer.cpp
+	"../includes/Printer.h"
+	<string>
+	<iostream>
+
+1507714990 x:\dev + outils\SimplHub\includes\printer.h
+	<string>
+	<vector>
+
+1507714990 source:x:\dev + outils\SimplHub\source\utils.cpp
+	"../includes/Utils.h"
+	"../includes/Var.h"
+	"../includes/EnvVar.h"
+	"../includes/Printer.h"
+	<algorithm>
+	<string>
+	<vector>
+	<iostream>
+	<fstream>
+
+1507714990 source:x:\dev + outils\SimplHub\source\var.cpp
+	"../includes/Var.h"
+	<string>
+
+1507731771 source:x:\dev + outils\SimplHub\source\hub.cpp
+	"../includes/Hub.h"
+	"../includes/Utils.h"
+	"../includes/Parser.h"
+	"../includes/Printer.h"
+	"../includes/Var.h"
+	<stdlib.h>
+	<string>
+	<iostream>
+	<vector>
+	<map>
+
+1507821314 source:c:\c++\SimplHub\source\var.cpp
+	"../includes/Var.h"
+	<string>
+
+1507718590 source:y:\dev + outils\SimplHub\source\envvar.cpp
+	"../includes/EnvVar.h"
+	<string>
+
+1507718590 y:\dev + outils\SimplHub\includes\envvar.h
+	<string>
+	<vector>
+
+1508322804 source:y:\dev + outils\SimplHub\source\hub.cpp
+	"../includes/Hub.h"
+	"../includes/Utils.h"
+	"../includes/Parser.h"
+	"../includes/Printer.h"
+	"../includes/Var.h"
+	<stdlib.h>
+	<string>
+	<iostream>
+	<vector>
+	<map>
+
+1508322804 y:\dev + outils\SimplHub\includes\hub.h
+	"Var.h"
+	"EnvVar.h"
+	<string>
+	<map>
+	<vector>
+
+1507718590 y:\dev + outils\SimplHub\includes\var.h
+	<string>
+	<vector>
+
+1507718590 y:\dev + outils\SimplHub\includes\utils.h
+	"Var.h"
+	"EnvVar.h"
+	<string>
+	<vector>
+
+1507718590 y:\dev + outils\SimplHub\includes\parser.h
+	<string>
+
+1508322804 y:\dev + outils\SimplHub\includes\printer.h
+	<string>
+	<vector>
+	<map>
+
+1507718590 source:y:\dev + outils\SimplHub\source\parser.cpp
+	"../includes/Parser.h"
+	"../includes/Utils.h"
+	<string>
+	<vector>
+
+1507718590 source:y:\dev + outils\SimplHub\source\printer.cpp
+	"../includes/Printer.h"
+	<string>
+	<iostream>
+
+1507718590 source:y:\dev + outils\SimplHub\source\utils.cpp
+	"../includes/Utils.h"
+	"../includes/Var.h"
+	"../includes/EnvVar.h"
+	"../includes/Printer.h"
+	<algorithm>
+	<string>
+	<vector>
+	<iostream>
+	<fstream>
+
+1507718590 source:y:\dev + outils\SimplHub\source\var.cpp
+	"../includes/Var.h"
+	<string>
+
+1507718694 source:y:\dev + outils\SimplHub\source\main.cpp
+	"../includes/Hub.h"
+
+1507714990 source:x:\dev + outils\simplhub\source\envvar.cpp
+	"../includes/EnvVar.h"
+	<string>
+
+1507714990 x:\dev + outils\simplhub\includes\envvar.h
+	<string>
+	<vector>
+
+1507715094 source:x:\dev + outils\simplhub\source\main.cpp
+	"../includes/Hub.h"
+
+1508319204 x:\dev + outils\simplhub\includes\hub.h
+	"Var.h"
+	"EnvVar.h"
+	<string>
+	<map>
+	<vector>
+
+1507714990 x:\dev + outils\simplhub\includes\var.h
+	<string>
+	<vector>
+
+1507714990 source:x:\dev + outils\simplhub\source\parser.cpp
+	"../includes/Parser.h"
+	"../includes/Utils.h"
+	<string>
+	<vector>
+
+1507714990 x:\dev + outils\simplhub\includes\parser.h
+	<string>
+
+1507714990 x:\dev + outils\simplhub\includes\utils.h
+	"Var.h"
+	"EnvVar.h"
+	<string>
+	<vector>
+
+1508320010 source:x:\dev + outils\simplhub\source\printer.cpp
+	"../includes/Printer.h"
+	<string>
+	<iostream>
+	<math.h>
+
+1508319204 x:\dev + outils\simplhub\includes\printer.h
+	<string>
+	<vector>
+	<map>
+
+1507714990 source:x:\dev + outils\simplhub\source\utils.cpp
+	"../includes/Utils.h"
+	"../includes/Var.h"
+	"../includes/EnvVar.h"
+	"../includes/Printer.h"
+	<algorithm>
+	<string>
+	<vector>
+	<iostream>
+	<fstream>
+
+1507714990 source:x:\dev + outils\simplhub\source\var.cpp
+	"../includes/Var.h"
+	<string>
+
+1510215788 source:x:\dev + outils\simplhub\source\hub.cpp
+	"../includes/Hub.h"
+	"../includes/Utils.h"
+	"../includes/Parser.h"
+	"../includes/Printer.h"
+	"../includes/Var.h"
+	<stdlib.h>
+	<string>
+	<iostream>
+	<vector>
+	<map>
+
