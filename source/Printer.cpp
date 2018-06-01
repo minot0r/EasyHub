@@ -2,6 +2,7 @@
 
 #include <string>
 #include <iostream>
+<<<<<<< HEAD
 #include <math.h>
 
 void Printer::printParamsError(int const& paramsLen, int const& needed){
@@ -11,6 +12,16 @@ void Printer::printParamsError(int const& paramsLen, int const& needed){
         std::cout << " Error: too many parameters, needed: " << needed << " (" << paramsLen << ").\n type help to see the list of commands." << std::endl;
     }else if(paramsLen < needed){
         std::cout << " Error: not enough parameters, needed: " << needed << " (" << paramsLen << ").\n type help to see the list of commands." << std::endl;
+=======
+
+void Printer::printParamsError(int const& paramsLen, int const& needed){
+    if(paramsLen < needed){
+        std::cout << " Error: not enough parameters (" << paramsLen << ").\n type help to see the list of commands." << std::endl;
+    }else if(paramsLen > needed){
+        std::cout << " Error: too many parameters (" << paramsLen << ").\n type help to see the list of commands." << std::endl;
+    }else if(needed == 0){
+        std::cout << " Error: parameters error (" << paramsLen << ").\n type help to see the list of commands." << std::endl;
+>>>>>>> eb3df076fdaf8d501bff1d2d125d89a0f12f085c
     }
 }
 
@@ -51,11 +62,19 @@ void Printer::couldNotSaveFile(){
 }
 
 void Printer::fetchVar(std::string const& var, std::string const& path, std::string const& type){
+<<<<<<< HEAD
     std::cout << " + Fetched var \"" << var << "\" connecting to path " << path << " with method " << type << "." << std::endl;
 }
 
 void Printer::fetchEnv(std::string const& var, std::string const& path, std::string const& type){
     std::cout << " + Fetched environment-var \"" << var << "\" with path " << path << ". (" << type << ")" << std::endl;
+=======
+    std::cout << " + Fetched var \"" << var << "\" connecting to path " << path << " with method " << type << "." << std::endl << std::endl;
+}
+
+void Printer::fetchEnv(std::string const& var, std::string const& path, std::string const& type){
+    std::cout << " + Fetched environment-var \"" << var << "\" with path " << path << ". (" << type << ")" << std::endl << std::endl;
+>>>>>>> eb3df076fdaf8d501bff1d2d125d89a0f12f085c
 }
 
 void Printer::savedFile(std::string const& path){
@@ -78,6 +97,7 @@ void Printer::successRemoved(std::string const& var, std::string const& level){
 void Printer::printEnvError(){
     std::cout << " Error: the environment-var is not set." << std::endl;
 }
+<<<<<<< HEAD
 
 std::string Printer::printHelp(std::map<std::string, std::string> help){
     std::map<std::string, std::string>::iterator it;
@@ -100,3 +120,5 @@ std::string Printer::printHelp(std::map<std::string, std::string> help){
 
     return returnedValue;
 }
+=======
+>>>>>>> eb3df076fdaf8d501bff1d2d125d89a0f12f085c

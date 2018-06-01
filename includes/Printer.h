@@ -3,7 +3,10 @@
 
 #include <string>
 #include <vector>
+<<<<<<< HEAD
 #include <map>
+=======
+>>>>>>> eb3df076fdaf8d501bff1d2d125d89a0f12f085c
 
 class Printer{
 
@@ -24,7 +27,10 @@ class Printer{
         static void notFound(std::string const& var);
         static void successRemoved(std::string const& var, std::string const& level);
         static void printEnvError();
+<<<<<<< HEAD
         static std::string printHelp(std::map<std::string, std::string> help);
+=======
+>>>>>>> eb3df076fdaf8d501bff1d2d125d89a0f12f085c
 
 };
 

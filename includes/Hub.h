@@ -23,6 +23,7 @@
 #define CMD_DEFINE "define"
 #define CMD_DELETE "delete"
 #define CMD_EXIT "exit"
+<<<<<<< HEAD
 #define CMD_EXECUTE "ex"
 #define CMD_LOAD "load"
 #define CMD_SAVE "save"
@@ -30,6 +31,14 @@
 #define CMD_CLS "cls"
 
 #define VERSION "2.8"
+=======
+#define CMD_EXECUTE "exc"
+#define CMD_LOAD "load"
+#define CMD_SAVE "save"
+#define CMD_CMD "cmd"
+
+#define VERSION "2.7"
+>>>>>>> eb3df076fdaf8d501bff1d2d125d89a0f12f085c
 
 class ConsoleHub{
 
@@ -44,7 +53,10 @@ class ConsoleHub{
 
         std::vector<Var> definedVars;
         std::vector<EnvVar> envVars;
+<<<<<<< HEAD
         std::map<std::string, std::string> init_map();
+=======
+>>>>>>> eb3df076fdaf8d501bff1d2d125d89a0f12f085c
 
         // Commands methods
 
